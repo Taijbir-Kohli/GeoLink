@@ -10,7 +10,7 @@ const MapComponent = ({ onCountryClick }) => {
   };
 
   return (
-    <MapContainer center={[20, 0]} zoom={2} style={{ height: "500px", width: "100%" }}>
+    <MapContainer center={[25, 80]} zoom={3} style={{ height: "500px", width: "100%" }}>
       <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
       <GeoJSON data={countriesData} onEachFeature={onEachCountry} />
     </MapContainer>

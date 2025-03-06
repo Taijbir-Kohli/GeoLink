@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Country Quiz</title>
+    <link rel="stylesheet" href="quiz.css">
+</head>
+<body>
+
+    <div class="popup-overlay" id="quizPopup">
+        <div class="popup-content">
+            <h2 id="quiz-title">Country Quiz</h2>
+            <div id="quiz-questions"></div>
+            <button class="submit-button" onclick="submitAnswers()">Submit Answers</button>
+            <button class="close-button" onclick="closePopup()">Close</button>
+        </div>
+    </div>
+
+    <script>
+        const quizData = {
+            "China": [
+                { question: "How long is the recorded history of China?", options: ["1,000 years", "3,000 years", "5,000 years"], answer: "5,000 years" },
+                { question: "Which famous trade route connected China with Europe?", options: ["Silk Road", "Suez Canal"], answer: "Silk Road" },
+                { question: "What is the name of the first emperor of China?", options: ["Qin Shi Huang", "Mao Zedong"], answer: "Qin Shi Huang" }
+            ]
+        };
+
+        function loadQuiz(country) {
+            document.getElementById("quiz-title").innerText = country + " - Quiz";
+            let quizQuestions = document.getElementById("quiz-questions");
+            quizQuestions.innerHTML = "";
+            if (quizData[country]) {
+                quizData[country].forEach((q, index) => {
+                    let questionBlock = document.createElement("div");
+                    questionBlock.innerHTML = `
+                        <p>${q.question}</p>
+                        ${q.options.map(option => 
+                            `<label><input type="radio" name="q${index}" value="${option}"> ${option}</label><br>`
+                        ).join("")}
+                    `;
+                    quizQuestions.appendChild(questionBlock);
+                });
+            } else {
+                quizQuestions.innerHTML = "<p>No quiz available.</p>";
+            }
+            document.getElementById("quizPopup").style.display = "flex";
+        }
+
+        function submitAnswers() {
+            alert("Answers submitted!");
+        }
+
+        function closePopup() {
+            document.getElementById("quizPopup").style.display = "none";
+        }
+
+        window.onload = () => loadQuiz("China"); // Load a sample quiz on page load
+    </script>
+
+</body>
+</html>

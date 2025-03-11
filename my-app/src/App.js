@@ -76,31 +76,31 @@ const App = () => {
     // }
 
     
-    try {
-      // Fetch from Spring Boot API first
-      const response = await fetch(`https://geolink-backend-latest.onrender.com/api/countries/${countryName}`);
-      if (response.ok) {
-        const data = await response.text();
-        return data;
-      }
-    } catch (error) {
-      console.error("Spring Boot API unavailable, trying Wikipedia...");
-    }
-
-
-
     // try {
-    //   // Fetch summary from Wikipedia API
-    //   const wikiResponse = await fetch(
-    //     `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(countryName)}`
-    //   );
-    //   if (wikiResponse.ok) {
-    //     const wikiData = await wikiResponse.json();
-    //     return wikiData.extract || "No history available.";
+    //   // Fetch from Spring Boot API first
+    //   const response = await fetch(`https://geolink-backend-latest.onrender.com/api/countries/${countryName}`);
+    //   if (response.ok) {
+    //     const data = await response.text();
+    //     return data;
     //   }
     // } catch (error) {
-    //   console.error("Wikipedia API failed, using local fallback.");
+    //   console.error("Spring Boot API unavailable, trying Wikipedia...");
     // }
+
+
+
+    try {
+      // Fetch summary from Wikipedia API
+      const wikiResponse = await fetch(
+        `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(countryName)}`
+      );
+      if (wikiResponse.ok) {
+        const wikiData = await wikiResponse.json();
+        return wikiData.extract || "No history available.";
+      }
+    } catch (error) {
+      console.error("Wikipedia API failed, using local fallback.");
+    }
 
     // Final fallback: Use local history data
     return historyData[countryName] || "No history available.";

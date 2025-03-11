@@ -75,6 +75,18 @@ const App = () => {
     //   console.error("Spring Boot API unavailable, trying Wikipedia...");
     // }
 
+    
+    try {
+      // Fetch from Spring Boot API first
+      const response = await fetch(`http://localhost:8080/api/countries/${countryName}`);
+      if (response.ok) {
+        const data = await response.text();
+        return data;
+      }
+    } catch (error) {
+      console.error("Spring Boot API unavailable, trying Wikipedia...");
+    }
+
 
 
     try {

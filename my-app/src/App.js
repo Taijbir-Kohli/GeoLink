@@ -89,18 +89,18 @@ const App = () => {
 
 
 
-    try {
-      // Fetch summary from Wikipedia API
-      const wikiResponse = await fetch(
-        `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(countryName)}`
-      );
-      if (wikiResponse.ok) {
-        const wikiData = await wikiResponse.json();
-        return wikiData.extract || "No history available.";
-      }
-    } catch (error) {
-      console.error("Wikipedia API failed, using local fallback.");
-    }
+    // try {
+    //   // Fetch summary from Wikipedia API
+    //   const wikiResponse = await fetch(
+    //     `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(countryName)}`
+    //   );
+    //   if (wikiResponse.ok) {
+    //     const wikiData = await wikiResponse.json();
+    //     return wikiData.extract || "No history available.";
+    //   }
+    // } catch (error) {
+    //   console.error("Wikipedia API failed, using local fallback.");
+    // }
 
     // Final fallback: Use local history data
     return historyData[countryName] || "No history available.";

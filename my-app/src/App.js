@@ -78,7 +78,7 @@ const App = () => {
     
     try {
       // Fetch from Spring Boot API first
-      const response = await fetch(`http://localhost:8080/api/countries/${countryName}`);
+      const response = await fetch(`https://geolink-backend-latest.onrender.com/api/countries/${countryName}`);
       if (response.ok) {
         const data = await response.text();
         return data;

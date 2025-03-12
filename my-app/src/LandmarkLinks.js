@@ -1,0 +1,12 @@
+const landmarkLinks = {
+    "India": "https://www.google.com/maps/embed?pb=!4v1602071499466!6m8!1m7!1sCAoSLEFGMVFpcFBsVGRsQUZ3YUdndDVJaHFGc1VnRG02dDNucXhoUkRzVXZnMHli!2m2!1d27.1750151!2d78.0421552!3f0!4f0!5f0.7820865974627469",
+    "Japan": "https://www.google.com/maps/embed?pb=!4v1602072741123!6m8!1m7!1sCAoSLEFGMVFpcE9DZFhBTmN5ZUZmR19KWF9tMmp5bHpfaTlXQzYwUjJQSE9aMUow!2m2!1d35.360556!2d138.727778!3f0!4f0!5f0.7820865974627469",
+    "Thailand": "https://www.google.com/maps/embed?pb=!4v1602083524210!6m8!1m7!1sCAoSLEFGMVFpcE1OaG5XZmJIRzBSX2l4dHZLRHhEV3N1dHhOaWttWkhza0tSUkdz!2m2!1d13.7500418!2d100.4912499!3f0!4f0!5f0.7820865974627469",
+    "South Korea": "https://www.google.com/maps/embed?pb=!4v1602084524000!6m8!1m7!1sCAoSLEFGMVFpcE5fZXdDM3g1Z3pJcGQ5MU9ydHBZNjJ2YjZ1TGRVR1N6TVR6UEdE!2m2!1d37.579617!2d126.977041!3f0!4f0!5f0.7820865974627469",
+    "Vietnam": "https://www.google.com/maps/embed?pb=!4v1602085267845!6m8!1m7!1sCAoSLEFGMVFpcE9nMnE2Q0tlTVhNYUlwb0owY0hMbTRuN3dsb3VQZVh2aTQzNFNw!2m2!1d20.9100505!2d107.183902!3f0!4f0!5f0.7820865974627469",
+    "Indonesia": "https://www.google.com/maps/embed?pb=!4v1602086129235!6m8!1m7!1sCAoSLEFGMVFpcE9XODJNZ1VvTVdRSURHNGZYa3ZNRmJoY1BzeUhxekM3eHVwRVNo!2m2!1d-7.607874!2d110.203751!3f0!4f0!5f0.7820865974627469",
+    "Turkey": "https://www.google.com/maps/embed?pb=!4v1602086939548!6m8!1m7!1sCAoSLEFGMVFpcE5kOWJqdmVBSXJWdGFuMU5mX3RxNnR3RlhIelZlZGtmWjNoOTRu!2m2!1d41.008583!2d28.980175!3f0!4f0!5f0.7820865974627469"
+  };
+  
+  export default landmarkLinks;
+  

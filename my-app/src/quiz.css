@@ -72,3 +72,17 @@
     cursor: pointer;
   }
   
+
+  .read-aloud-button {
+    background-color: #28a745;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  .read-aloud-button:hover {
+    background-color: #218838;
+  }
+  

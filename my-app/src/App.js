@@ -4,8 +4,8 @@ import historyData from "./HistoryData";
 import quizData from "./QuizData";
 import Quiz from "./quiz.js";
 import landmarkLinks from "./LandmarkLinks.js";
+import WelcomePopup from "./WelcomePopup"; // ✅ Import the Welcome Popup
 import "./quiz.css";
-
 
 const App = () => {
   const [selectedCountry, setSelectedCountry] = useState(null);
@@ -14,6 +14,10 @@ const App = () => {
   const [selectedQuiz, setSelectedQuiz] = useState(null);
   const [showStreetView, setShowStreetView] = useState(false);
   const [streetViewUrl, setStreetViewUrl] = useState("");
+  const [isSpeaking, setIsSpeaking] = useState(false);
+  const [showWelcomePopup, setShowWelcomePopup] = useState(true); // ✅ State for Welcome Popup
+
+  let speechSynthesisInstance = window.speechSynthesis;
 
   const fetchCountryHistory = async (countryName) => {
     try {
@@ -31,6 +35,10 @@ const App = () => {
   };
 
   const handleCountryClick = async (countryName) => {
+    if (isSpeaking) {
+      speechSynthesisInstance.cancel();
+      setIsSpeaking(false);
+    }
     setSelectedCountry(countryName);
     const historyText = await fetchCountryHistory(countryName);
     setHistory(historyText);
@@ -50,9 +58,33 @@ const App = () => {
     }
   };
 
+  const toggleSpeech = () => {
+    if (isSpeaking) {
+      speechSynthesisInstance.cancel();
+      setIsSpeaking(false);
+    } else {
+      if (history) {
+        const speech = new SpeechSynthesisUtterance(history);
+        speech.rate = 1;
+        speech.pitch = 1;
+        speech.volume = 1;
+        speech.onend = () => setIsSpeaking(false);
+        speechSynthesisInstance.speak(speech);
+        setIsSpeaking(true);
+      }
+    }
+  };
+
   return (
+    /* add before GeoLink h1
+    <img src="/favicon.ico" alt="GeoLink Logo" className="logo" /> */
     <div>
-      <h1>GeoLink: Select a Country</h1>
+      <title>GeoLink</title>
+
+      {showWelcomePopup && <WelcomePopup onClose={() => setShowWelcomePopup(false)} />} {/* ✅ Show popup on load */}
+      <h1>
+        GeoLink
+      </h1>
       <MapComponent onCountryClick={handleCountryClick} />
 
       {selectedCountry && (
@@ -66,6 +98,9 @@ const App = () => {
             <button className="street-view-button" onClick={() => openStreetView(selectedCountry)}>
               360° View
             </button>
+            <button className="read-aloud-button" onClick={toggleSpeech}>
+              {isSpeaking ? "🔇 Stop" : "🔊 Read Aloud"}
+            </button>
           </div>
         </div>
       )}
@@ -78,7 +113,6 @@ const App = () => {
         />
       )}
 
-      {/* Street View Popup */}
       {showStreetView && (
         <div className="popup-overlay" onClick={() => setShowStreetView(false)}>
           <div className="popup-content" onClick={(e) => e.stopPropagation()}>

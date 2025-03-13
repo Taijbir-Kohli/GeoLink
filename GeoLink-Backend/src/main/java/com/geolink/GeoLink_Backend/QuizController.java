@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@CrossOrigin(origins = "http://localhost:3000") // Allow React frontend to access API
+@CrossOrigin(origins = {"http://localhost:3000", "https://geolink-uzww.onrender.com"})
 @RestController
 @RequestMapping("/api/quizzes")
 public class QuizController {

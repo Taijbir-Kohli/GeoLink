@@ -46,7 +46,7 @@ const App = () => {
 
   const fetchQuiz = async (country) => {
     try {
-      const response = await fetch(`http://geolink-backend-latest.onrender.com/api/quizzes/${encodeURIComponent(country)}`);
+      const response = await fetch(`https://geolink-backend-latest.onrender.com/api/quizzes/${encodeURIComponent(country)}`);
       const data = await response.json();
       console.log(`Quiz data for ${country}:`, data); // Debugging line
       return data;

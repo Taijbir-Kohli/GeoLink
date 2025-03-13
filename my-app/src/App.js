@@ -44,10 +44,29 @@ const App = () => {
     setHistory(historyText);
   };
 
-  const openQuiz = (country) => {
-    setSelectedQuiz(quizData[country] || []);
+  const fetchQuiz = async (country) => {
+    try {
+      const response = await fetch(`http://localhost:8080/api/quizzes/${encodeURIComponent(country)}`);
+      const data = await response.json();
+      console.log(`Quiz data for ${country}:`, data); // Debugging line
+      return data;
+    } catch (error) {
+      console.error("Quiz API failed.", error);
+    }
+    return [];
+  };
+  
+  const openQuiz = async (country) => {
+    const quizQuestions = await fetchQuiz(country);
+    setSelectedQuiz(quizQuestions);
     setShowPopup(true);
   };
+  
+
+  // const openQuiz = (country) => {
+  //   setSelectedQuiz(quizData[country] || []);
+  //   setShowPopup(true);
+  // };
 
   const openStreetView = (country) => {
     if (landmarkLinks[country]) {

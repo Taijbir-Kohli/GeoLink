@@ -11,6 +11,7 @@ public class CorsConfig implements WebMvcConfigurer {
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/api/**")  // Allow CORS for all /api endpoints
                 .allowedOrigins("https://geolink-uzww.onrender.com")  // Your frontend URL
+                .allowedOrigins("http://localhost:3000") // React frontend URL
                 .allowedMethods("GET", "POST", "PUT", "DELETE")  // Allowed HTTP methods
                 .allowedHeaders("*");  // Allow all headers
     }

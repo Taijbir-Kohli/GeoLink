@@ -1,3 +1,4 @@
+/* welcomePopup.css*/
 .popup-content {
   position: relative;
   width: 100%;
@@ -28,6 +29,7 @@
   display: flex; /* Optional if you want centered text */
   align-items: center;
   justify-content: center;
+  z-index: 5000;
 }
 
 .welcome-text {
@@ -39,6 +41,7 @@
   text-align: center;
   color: white;
   padding: 20px;
+  z-index: 5000;
 }
 
 

@@ -8,6 +8,8 @@ import WelcomePopup from "./WelcomePopup";
 import "./quiz.css";
 import "./App.css";
 import "./streetview.css";
+import { useRef } from "react";
+
 
 const App = () => {
   const [selectedCountry, setSelectedCountry] = useState(null);
@@ -18,6 +20,8 @@ const App = () => {
   const [streetViewUrl, setStreetViewUrl] = useState("");
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [showWelcomePopup, setShowWelcomePopup] = useState(true);
+  const countryInfoRef = useRef(null); 
+
 
   let speechSynthesisInstance = window.speechSynthesis;
 
@@ -56,6 +60,12 @@ const App = () => {
     setSelectedCountry(countryName);
     const historyText = await fetchCountryHistory(countryName);
     setHistory(historyText);
+
+    if (countryInfoRef.current) {
+      setTimeout(() => {
+        countryInfoRef.current.scrollIntoView({ behavior: "smooth" });
+      }, 200); // slight delay to allow render
+    }    
     // setHistory(historyData[countryName] || "No history available.");
   }; 
 
@@ -139,29 +149,36 @@ const App = () => {
 
       {showWelcomePopup && <WelcomePopup onClose={() => setShowWelcomePopup(false)} />}
       <div className="header-container">
-      <img src="/favicon.ico" alt="GeoLink Mascot" className="mascot" />
+      <img src="/favicon.ico" alt="GeoLink logo" className="logo" />
         <h1 className="title">GeoLink</h1>
       </div>
 
       <MapComponent onCountryClick={handleCountryClick} />
 
       {selectedCountry && (
-        <div className="country-info">
-          <h2>{selectedCountry}</h2>
-          <p>{history}</p>
-          <div className="button-group">
-            <button className="more-info-button" onClick={() => openQuiz(selectedCountry)}>
-              Take Quiz
-            </button>
-            <button className="street-view-button" onClick={() => openStreetView(selectedCountry)}>
-              360° View
-            </button>
-            <button className="read-aloud-button" onClick={toggleSpeech}>
-              {isSpeaking ? "🔇 Stop" : "🔊 Read Aloud"}
-            </button>
+        <div className="country-info-wrapper" ref={countryInfoRef}>
+          <div className="country-info">
+            <h2>{selectedCountry}</h2>
+            <p>{history}</p>
+            <div className="button-group">
+              <button className="more-info-button" onClick={() => openQuiz(selectedCountry)}>
+                Take Quiz
+              </button>
+              <button className="street-view-button" onClick={() => openStreetView(selectedCountry)}>
+                360° View
+              </button>
+              <button className="read-aloud-button" onClick={toggleSpeech}>
+                {isSpeaking ? "🔇 Stop" : "🔊 Read Aloud"}
+              </button>
+            </div>
+          </div>
+          <div className="flag-box">
+            <img src="/img/test.jpg" alt={`${selectedCountry} flag`} className="flag-image" />
           </div>
         </div>
       )}
+
+
 
       {showPopup && selectedQuiz && (
         <Quiz

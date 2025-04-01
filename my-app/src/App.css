@@ -1,28 +1,121 @@
+/* App.css*/
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@600&display=swap');
+
+/* Apply Fredoka globally to all text */
+body, html, button {
+  font-family: 'Fredoka', sans-serif;
+}
+
 
 .title {
   color: #4a75f9;
-
   display: inline-block;
   font-family: 'Fredoka', sans-serif;
-  font-size: 2.8em;
+  font-size: 5em;
   margin: 0;
   text-shadow: 2px 2px #1a53ff;
 }
 
 
 .header-container {
+  position: sticky;
+  top: 0;
+  z-index: 999; /* make sure it stays on top */
   display: flex;
   align-items: center;
   background-color: #fef3a5;
   padding: 20px 40px;
-  gap: 15px; /* adds space between logo and text */
+  gap: 15px;
+  border-bottom: 2px solid #ddd;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
 }
 
-.mascot {
-  width: 60px;
-  height: 60px;
+.logo {
+  width: 80px;
+  height: 80px;
 }
 
 
+.country-info {
+  padding: 30px 40px;
+  background-color: #fef3a5;
+  border-radius: 10px;
+  margin: 20px auto;
+  max-width: 1000px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  font-family: 'Fredoka', sans-serif;
+}
 
+.country-info h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: #000;
+}
+
+.country-info p {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #222;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.button-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.more-info-button,
+.street-view-button,
+.read-aloud-button {
+  font-size: 1rem;
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 600;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.more-info-button {
+  background-color: #f0f0f0;
+  color: #000;
+}
+
+.more-info-button:hover {
+  background-color: #e0e0e0;
+}
+
+.country-info-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fef3a5;
+  padding: 30px 40px;
+  border-radius: 15px;
+  margin: 30px 80px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.country-info {
+  flex: 1 1 500px;
+}
+
+.flag-box {
+  flex: 0 0 350px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flag-image {
+  width: 300px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}

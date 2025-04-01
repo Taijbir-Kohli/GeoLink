@@ -21,17 +21,18 @@ const App = () => {
 
   let speechSynthesisInstance = window.speechSynthesis;
 
-    // // For backend testing
-    // try {
-    //   // Fetch from Spring Boot API first
-    //   const response = await fetch(`http://localhost:8080/api/countries/${countryName}`);
-    //   if (response.ok) {
-    //     const data = await response.text();
-    //     return data;
-    //   }
-    // } catch (error) {
-    //   console.error("Spring Boot API unavailable, trying Wikipedia...");
-    // }
+  const fetchCountryHistory = async (countryName) => {
+    // For backend testing
+    try {
+      // Fetch from Spring Boot API first
+      const response = await fetch(`http://localhost:8080/api/countries/${countryName}`);
+      if (response.ok) {
+        const data = await response.text();
+        return data;
+      }
+    } catch (error) {
+      console.error("Spring Boot API unavailable, trying Wikipedia...");
+    }
     // For real time deployment through wiki
   //   try {
   //     const wikiResponse = await fetch(
@@ -46,39 +47,41 @@ const App = () => {
   //   }
   //   return historyData[countryName] || "No history available.";
   // };
-
-  const handleCountryClick = (countryName) => {
+  };
+  const handleCountryClick = async (countryName) => {
     if (isSpeaking) {
       speechSynthesisInstance.cancel();
       setIsSpeaking(false);
     }
     setSelectedCountry(countryName);
-    setHistory(historyData[countryName] || "No history available.");
+    const historyText = await fetchCountryHistory(countryName);
+    setHistory(historyText);
+    // setHistory(historyData[countryName] || "No history available.");
   }; 
 
   // For realtime deployment on render
-  const fetchQuiz = async (country) => {
-    try {
-      const response = await fetch(`https://geolink-backend-latest.onrender.com/api/quizzes/${encodeURIComponent(country)}`);
-      const data = await response.json();
-      console.log(`Quiz data for ${country}:`, data); // Debugging line
-      return data;
-    } catch (error) {
-      console.error("Quiz API failed.", error);
-    }
-    return [];
-  };
-
   // const fetchQuiz = async (country) => {
   //   try {
-  //     const response = await fetch(`http://localhost:8080/api/quizzes/${encodeURIComponent(country)}`);
+  //     const response = await fetch(`https://geolink-backend-latest.onrender.com/api/quizzes/${encodeURIComponent(country)}`);
   //     const data = await response.json();
+  //     console.log(`Quiz data for ${country}:`, data); // Debugging line
   //     return data;
   //   } catch (error) {
   //     console.error("Quiz API failed.", error);
   //   }
   //   return [];
   // };
+
+  const fetchQuiz = async (country) => {
+    try {
+      const response = await fetch(`http://localhost:8080/api/quizzes/${encodeURIComponent(country)}`);
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error("Quiz API failed.", error);
+    }
+    return [];
+  };
 
   const openQuiz = async (country) => {
     const quizQuestions = await fetchQuiz(country);

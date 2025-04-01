@@ -14,8 +14,8 @@ const Quiz = ({ selectedCountry, quizQuestions, onClose }) => {
   };
 
   return (
-    <div className="popup-overlay" onClick={onClose}>
-      <div className="popup-content" onClick={(e) => e.stopPropagation()}>
+    <div className="quiz-overlay" onClick={onClose}>
+      <div className="quiz-content" onClick={(e) => e.stopPropagation()}>
         <h2>{selectedCountry} - Quiz</h2>
         {quizQuestions.length > 0 ? (
           quizQuestions.map((q, index) => (

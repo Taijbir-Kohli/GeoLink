@@ -6,6 +6,7 @@ import Quiz from "./quiz.js";
 import landmarkLinks from "./LandmarkLinks.js";
 import WelcomePopup from "./WelcomePopup";
 import "./quiz.css";
+import "./streetview.css";
 
 const App = () => {
   const [selectedCountry, setSelectedCountry] = useState(null);
@@ -53,6 +54,24 @@ const App = () => {
       alert("No 360° view available for this country yet.");
     }
   };
+
+  const enterFullscreen = () => {
+  const iframe = document.getElementById("streetview-iframe");
+  if (iframe) {
+    if (iframe.requestFullscreen) {
+      iframe.requestFullscreen();
+    } else if (iframe.webkitRequestFullscreen) {
+      iframe.webkitRequestFullscreen();
+    } else if (iframe.mozRequestFullScreen) {
+      iframe.mozRequestFullScreen();
+    } else if (iframe.msRequestFullscreen) {
+      iframe.msRequestFullscreen();
+    } else {
+      alert("Fullscreen not supported on this browser.");
+    }
+  }
+};
+
 
   const toggleSpeech = () => {
     if (isSpeaking) {
@@ -106,18 +125,24 @@ const App = () => {
       )}
 
       {showStreetView && (
-        <div className="popup-overlay" onClick={() => setShowStreetView(false)}>
-          <div className="popup-content" onClick={(e) => e.stopPropagation()}>
+        <div className="streetview-overlay" onClick={() => setShowStreetView(false)}>
+          <div className="streetview-content" onClick={(e) => e.stopPropagation()}>
             <h2>360° View - {selectedCountry}</h2>
             <iframe
+              id="streetview-iframe"
               src={streetViewUrl}
-              width="100%"
-              height="400px"
-              style={{ border: "none" }}
+              title="Street View"
               allowFullScreen
               loading="lazy"
             ></iframe>
-            <button className="close-button" onClick={() => setShowStreetView(false)}>Close</button>
+            <div className="button-bar">
+              <button className="action-button" onClick={enterFullscreen}>
+                Full Screen
+              </button>
+              <button className="action-button" onClick={() => setShowStreetView(false)}>
+                Close
+              </button>
+            </div>
           </div>
         </div>
       )}

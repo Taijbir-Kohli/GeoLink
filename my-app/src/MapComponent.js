@@ -21,7 +21,7 @@ const RecenterButton = () => {
         backgroundColor: "white",
         border: "1px solid #ccc",
         cursor: "pointer",
-        zIndex: 1000 // Ensures the button stays on top
+        zIndex: 400 // Ensures the button stays on top
       }}
     >
       Recenter Map

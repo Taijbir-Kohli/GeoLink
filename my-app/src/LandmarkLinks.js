@@ -1,88 +1,52 @@
 const landmarkLinks = {
-  "Afghanistan": "https://www.360cities.net/embed_iframe/afghanistan-jalalabad",
+  "Afghanistan": "https://www.google.com/maps/embed?pb=!4v1743541909439!6m8!1m7!1sCAoSFkNJSE0wb2dLRUlDQWdJRDRoc0ctR1E.!2m2!1d34.502355999233!2d69.1598171943002!3f112.57!4f9.310000000000002!5f0.7820865974627469",
   "Armenia": "https://www.airpano.com/embed.php?3D=armenia-1",
-  "Azerbaijan": "https://www.360cities.net/embed_iframe/360view-azerbaijan-baku-icherisheher-kichik-karvansaray",
-  "Bahrain": "https://www.360cities.net/embed_iframe/bahrain-financial-harbour",
-  "Baikonur": "https://www.360cities.net/embed_iframe/glory-conquerors-of-space-baikonur",
-  "Bangladesh": "https://www.360cities.net/embed_iframe/swarighat-the-fish-market-nex-to-buriganga-river-showari-ghat-dhaka-bangladesh-asia",
+  "Azerbaijan": "https://www.google.com/maps/embed?pb=!4v1743541406742!6m8!1m7!1sCAoSLEFGMVFpcFBCZ3VmeWpjQUNWb21zVTNUa2FuN0NseTNCT3cwZVNiSlJUdjNT!2m2!1d40.41572689292786!2d50.00899082666471!3f320.2!4f-5.569999999999993!5f0.7820865974627469",
+  "Bahrain": "https://www.google.com/maps/embed?pb=!4v1743541991059!6m8!1m7!1sCAoSLEFGMVFpcE8wZk5LWHFiVjZwTlNoYnZKZnBEQXRlOEgxMkg1RXE1U1VzeFMx!2m2!1d26.23260681213172!2d50.52013406994018!3f307.14!4f0.09000000000000341!5f0.7820865974627469",
+  "Baikonur": "https://www.google.com/maps/embed?pb=!4v1743542063857!6m8!1m7!1sCAoSLEFGMVFpcE1yZWQ1QTlUMk5ubXVWblhJeExmVC16ZVZkaUtuS0gyUWJ6b2hy!2m2!1d45.62835010230125!2d63.32124444599917!3f269.39!4f22.150000000000006!5f0.7820865974627469",
+  "Bangladesh": "https://www.google.com/maps/embed?pb=!4v1743542118924!6m8!1m7!1sQVtlFRAl-Vt2bTLFBbA0bg!2m2!1d23.71909792947901!2d90.38915591234725!3f228.03!4f-5.3700000000000045!5f0.7820865974627469",
   "Bhutan": "https://www.airpano.com/embed.php?3D=bhutan-1",
-  "Brunei": "https://www.360cities.net/embed_iframe/brunei-bandar-seri-begawan-omar-ali-saifuddin-mosque-1",
+  "Brunei": "https://www.google.com/maps/embed?pb=!4v1743542164615!6m8!1m7!1sCAoSLEFGMVFpcFBLY1poYXdQSGZuaVlOeFhWS3RrRloxY2pTVGhJUWpibjVnUE1j!2m2!1d4.887954629907209!2d114.9390155147532!3f100.05!4f-9.489999999999995!5f0.7820865974627469",
   "Cambodia": "https://www.airpano.com/embed.php?3D=angkor-wat-cambodia",
   "China": "https://www.airpano.com/embed.php?3D=china-great-wall-2024-1",
-  "Cyprus": "https://www.360cities.net/embed_iframe/profitis-ilias-aerial-pano",
+  "Cyprus": "https://www.google.com/maps/embed?pb=!4v1743542241214!6m8!1m7!1sCAoSLEFGMVFpcE5WcWRSc3hEYV9ud0xBcU9BRTJZWHIxLW96bENSbHQyUkt5NUhR!2m2!1d34.98371967958636!2d32.74128345764714!3f183.66!4f-3.6500000000000057!5f0.7820865974627469",
   "Georgia": "https://www.airpano.com/embed.php?3D=georgia",
   "India": "https://www.airpano.com/embed.php?3D=taj-mahal-india",
   "Indonesia": "https://www.airpano.com/embed.php?3D=borobudur-indonesia",
-  "Iran": "https://www.360cities.net/embed_iframe/guardian-sea-lighthouse",
-  "Iraq": "https://www.360cities.net/embed_iframe/ramadan-kareem",
+  "Iran": "https://www.google.com/maps/embed?pb=!4v1743542415349!6m8!1m7!1sCAoSLEFGMVFpcFBIUE9wQlFISm1LaGhNV0NyemZLQzhiQlZSMGMyaTdMYTg0cU1t!2m2!1d35.70015260923758!2d51.33803768066184!3f193.05!4f19.569999999999993!5f0.7820865974627469",
+  "Iraq": "https://www.google.com/maps/embed?pb=!4v1743542451139!6m8!1m7!1sCAoSFkNJSE0wb2dLRUlDQWdJQ09zSmFmQlE.!2m2!1d31.99585256906772!2d44.31329572685887!3f179.17!4f-4.8700000000000045!5f0.7820865974627469",
   "Israel": "https://www.airpano.com/embed.php?3D=jerusalem-israel",
-  "Japan": "https://www.360cities.net/embed_iframe/shibuya-people-crossing-tokyo-japan",
+  "Japan": "https://www.google.com/maps/embed?pb=!4v1743542514121!6m8!1m7!1sLvGOlkXKI0eSjsTfKq9qPQ!2m2!1d35.41448212447618!2d138.5921291581204!3f111.93915695341654!4f7.292315689679569!5f0.7820865974627469",
   "Jordan": "https://www.airpano.com/embed.php?3D=petra-best-jordan",
   "Kazakhstan": "https://www.airpano.com/embed.php?3D=mangyshlak2",
-  "Kuwait": "https://www.360cities.net/embed_iframe/the-grand-mosque-kuwait",
+  "Kuwait": "https://www.p4panorama.com/panos/kuwait-towers-360-virtual-tour/#google_vignette",
   "Kyrgyzstan": "https://www.airpano.com/embed.php?3D=kyrgyzstan",
-  "Laos": "https://www.360cities.net/embed_iframe/wat-may-souvannapoumaram-luang-prabang-3",
-  "Lebanon": "https://www.360cities.net/embed_iframe/water-lebanon-chabrouh",
-  "Malaysia": "https://www.airpano.com/embed.php?3D=kuala-lumpur-malaysia",
+  "Laos": "https://www.google.com/maps/embed?pb=!4v1743542543630!6m8!1m7!1sCAoSF0NJSE0wb2dLRUlDQWdJQzRvNEtqdHdF!2m2!1d17.97676563516454!2d102.6362220653291!3f11.74!4f16.090000000000003!5f0.7820865974627469",
+  "Lebanon": "https://www.google.com/maps/embed?pb=!4v1743542740829!6m8!1m7!1sVUuGhFzNUXp3HUSHPQkS2w!2m2!1d34.12020217285634!2d35.64613100658298!3f124.66!4f18.010000000000005!5f0.7820865974627469",
   "Mongolia": "https://www.airpano.com/embed.php?3D=ulan-bator-mongolia",
   "Myanmar": "https://www.airpano.com/embed.php?3D=bagan-myanmar",
   "Nepal": "https://www.airpano.com/embed.php?3D=everest-top-view",
-  "North Korea": "https://www.360cities.net/embed_iframe/yy-8",
-  "Oman": "https://www.360cities.net/embed_iframe/yiti-oman",
-  "Pakistan": "https://www.360cities.net/embed_iframe/naulakha-pavilion-shahi-quila-lahore-fort",
-  "Palestine": "https://www.360cities.net/embed_iframe/monasterygeorgekoziba",
-  "Philippines": "https://www.360cities.net/embed_iframe/mornings-in-el-nido-philippines-1",
-  "Qatar": "https://www.360cities.net/embed_iframe/national-museum-doha-qatar",
-  "Saudi Arabia": "https://www.360cities.net/embed_iframe/riyadh-saudi-arabia",
+  "North Korea": "https://www.google.com/maps/embed?pb=!4v1743542803526!6m8!1m7!1sCAoSLEFGMVFpcE5vZ3FmWUhpMzZoZGNGRG1qcU0ydEdqZE95RmtmVkd1SVY2VXpQ!2m2!1d39.01799771238264!2d125.7625122268539!3f152.17876748587713!4f20.492402891946284!5f0.7820865974627469",
+  "Oman": "https://www.google.com/maps/embed?pb=!4v1743542862967!6m8!1m7!1sCAoSLEFGMVFpcFBmQWhnenBrNjlQa0xWTUZyei16Q0d3RkZpWjAzSWJCck9BRi15!2m2!1d23.58383569850336!2d58.38821918099057!3f81.41!4f2.989999999999995!5f0.7820865974627469",
+  "Pakistan": "https://www.google.com/maps/embed?pb=!4v1743542904991!6m8!1m7!1sCAoSLEFGMVFpcFBmanFObXdfWXJPY1dTZWF3d2ZTZGxoeXVzc09Wb2lOd09XVjdO!2m2!1d31.58849026428816!2d74.31524709928824!3f166.91!4f3.8400000000000034!5f0.7820865974627469",
+  "Palestine": "https://www.google.com/maps/embed?pb=!4v1743542936859!6m8!1m7!1sCAoSK0FGMVFpcE5UNm01NUxBM2RuY3NCZTZjZFRPc09hVHBCVExoWGtNRC00RGc.!2m2!1d31.74143099136897!2d35.45914897510389!3f149.43!4f4.840000000000003!5f0.7820865974627469",
+  "Philippines": "https://www.google.com/maps/embed?pb=!4v1743542977171!6m8!1m7!1sCAoSLEFGMVFpcFA0dWhSMzIzdXM1dkdYRk1wcVhTX1VxZXhEUHVGaktOMk9DZEtr!2m2!1d16.92394182910115!2d121.0557270774656!3f348.42!4f-14.329999999999998!5f0.7820865974627469",
+  "Qatar": "https://www.google.com/maps/embed?pb=!4v1743543015469!6m8!1m7!1sVi3URo7RwyDjYSsg82c4ww!2m2!1d25.39466859033188!2d51.5299491060462!3f167.41!4f2.3499999999999943!5f0.7820865974627469",
+  "Saudi Arabia": "https://www.google.com/maps/embed?pb=!4v1743543039953!6m8!1m7!1sCAoSLEFGMVFpcE41Y2o1LTh1RUNRLUlPRWZjT19IZFhnYnoybGlyeVBSVTQwNHR2!2m2!1d21.4228713857012!2d39.82573473489072!3f113.93!4f-22.590000000000003!5f0.7820865974627469",
   "Singapore": "https://www.airpano.com/embed.php?3D=singapore",
-  "South Korea": "https://www.360cities.net/embed_iframe/cheonggyecheon-stream-seoul-korea-ii",
-  "Sri Lanka": "https://www.360cities.net/embed_iframe/sri-muththumari-amman-kovil-matale",
+  "South Korea": "https://www.google.com/maps/embed?pb=!4v1743543068757!6m8!1m7!1sCAoSLEFGMVFpcE9uRnl5V3BGX1dTeDBrSW9TQWVNUEo1ZGVWSjBKWHZudVZ3dzZi!2m2!1d37.55109900746087!2d126.9909800408222!3f62.33!4f10.290000000000006!5f0.7820865974627469",
+  "Sri Lanka": "https://www.p4panorama.com/panos/polonnaruwa-360-virtual-reality-tour/",
   "Syria": "https://www.airpano.com/embed.php?3D=palmyra",
-  "Taiwan": "https://www.360cities.net/embed_iframe/neimen-district-kaohsiung-city-taiwan",
+  "Taiwan": "https://www.google.com/maps/embed?pb=!4v1743543098418!6m8!1m7!1sDZc8pd_gxSdYcPUnux8GkQ!2m2!1d25.03506605332072!2d121.5210366637192!3f119.35!4f5.680000000000007!5f0.7820865974627469",
   "Tajikistan": "https://www.airpano.com/embed.php?3D=tajikistan",
-  "Thailand": "https://www.360cities.net/embed_iframe/grand-palace-bangkok-4-koh-phangan",
+  "Thailand": "https://www.p4panorama.com/panos/grand-palace-thailand-360-virtual-reality-tour/",
   "Timor-Leste": "https://www.google.com/maps/embed?pb=!4v1712789654877!6m8!1m7!1sAF1QipOdPpWJEFFwcwoNEWvJaijgLFzlCYuNX3A5t60X!2m2!1d-8.5205683!2d125.608364!3f83.05!4f112.78!5f0.7820865974627469",
   "Turkey": "https://www.airpano.com/embed.php?3D=mosques-istanbul-turkey",
-  "Turkmenistan": "https://www.360cities.net/embed_iframe/turkmenistan-dash-metjit-museum",
+  "Turkmenistan": "https://www.google.com/maps/embed?pb=!4v1743543120305!6m8!1m7!1sCAoSLEFGMVFpcFB0dmdacGg0SndiNnF6aENqZEVIUGlMSmRMWk5WQl9VOGsyZV81!2m2!1d40.25136971253763!2d58.43718089273192!3f45.48!4f-9.709999999999994!5f0.7820865974627469",
   "United Arab Emirates": "https://www.airpano.com/embed.php?3D=dubai-uae",
   "Uzbekistan": "https://www.airpano.com/embed.php?3D=bukhara",
   "Vietnam": "https://www.airpano.com/embed.php?3D=halong-bay-vietnam",
   "Yemen": "https://www.airpano.com/embed.php?3D=socotra_part_1"
+};
 
-
-
-  
-
-
-
-
-  };
-  
-  
-  export default landmarkLinks;
-  
-
-  /* 
-  "Afghanistan": "https://www.google.com/maps/embed?pb=!4v1602090000000!6m8!1m7!1sCAoSLEFGMVFpcE1FZ1F3U3pJcF9tM0p5Z3p5b3p3!2m2!1d34.8238!2d67.8250!3f0!4f0!5f0.7820865974627469",
-    "Armenia": "https://www.google.com/maps/embed?pb=!4v1602091000000!6m8!1m7!1sCAoSLEFGMVFpcE5FZ1F3U3pJcF9tM0p5Z3p5b3p3!2m2!1d40.1373!2d44.8172!3f0!4f0!5f0.7820865974627469",
-    "Azerbaijan": "https://www.google.com/maps/embed?pb=!4v1602092000000!6m8!1m7!1sCAoSLEFGMVFpcE9FZ1F3U3pJcF9tM0p5Z3p5b3p3!2m2!1d40.3667!2d49.8378!3f0!4f0!5f0.7820865974627469",
-    "Bahrain": "https://www.google.com/maps/embed?pb=!4v1602093000000!6m8!1m7!1sCAoSLEFGMVFpcEJhaHJhaW5Gb3J0QW5jaWVudCE!2m2!1d26.2336!2d50.5208!3f0!4f0!5f0.7820865974627469",
-  
-    "India": "https://www.google.com/maps/embed?pb=!4v1602071499466!6m8!1m7!1sCAoSLEFGMVFpcFBsVGRsQUZ3YUdndDVJaHFGc1VnRG02dDNucXhoUkRzVXZnMHli!2m2!1d27.1750151!2d78.0421552!3f0!4f0!5f0.7820865974627469",
-    "Japan": "https://www.google.com/maps/embed?pb=!4v1602072741123!6m8!1m7!1sCAoSLEFGMVFpcE9DZFhBTmN5ZUZmR19KWF9tMmp5bHpfaTlXQzYwUjJQSE9aMUow!2m2!1d35.360556!2d138.727778!3f0!4f0!5f0.7820865974627469",
-    "Thailand": "https://www.google.com/maps/embed?pb=!4v1602083524210!6m8!1m7!1sCAoSLEFGMVFpcE1OaG5XZmJIRzBSX2l4dHZLRHhEV3N1dHhOaWttWkhza0tSUkdz!2m2!1d13.7500418!2d100.4912499!3f0!4f0!5f0.7820865974627469",
-    "South Korea": "https://www.google.com/maps/embed?pb=!4v1602084524000!6m8!1m7!1sCAoSLEFGMVFpcE5fZXdDM3g1Z3pJcGQ5MU9ydHBZNjJ2YjZ1TGRVR1N6TVR6UEdE!2m2!1d37.579617!2d126.977041!3f0!4f0!5f0.7820865974627469",
-    "Saudi Arabia": "https://www.p4panorama.com/panos/kuwait-towers-360-virtual-tour/#google_vignette",
-    "Vietnam": "https://www.google.com/maps/embed?pb=!4v1602085267845!6m8!1m7!1sCAoSLEFGMVFpcE9nMnE2Q0tlTVhNYUlwb0owY0hMbTRuN3dsb3VQZVh2aTQzNFNw!2m2!1d20.9100505!2d107.183902!3f0!4f0!5f0.7820865974627469",
-    "Indonesia": "https://www.google.com/maps/embed?pb=!4v1602086129235!6m8!1m7!1sCAoSLEFGMVFpcE9XODJNZ1VvTVdRSURHNGZYa3ZNRmJoY1BzeUhxekM3eHVwRVNo!2m2!1d-7.607874!2d110.203751!3f0!4f0!5f0.7820865974627469",
-    "Turkey": "https://www.google.com/maps/embed?pb=!4v1602086939548!6m8!1m7!1sCAoSLEFGMVFpcE5kOWJqdmVBSXJWdGFuMU5mX3RxNnR3RlhIelZlZGtmWjNoOTRu!2m2!1d41.008583!2d28.980175!3f0!4f0!5f0.7820865974627469"
-  };
-  
-  
-  countries to add:
-  Afghanistan, Armenia, Azerbaijan, Bahrain, Bangladesh, Bhutan, Brunei, Cambodia, China, 
-  Cyprus, Georgia, Iran, Iraq, Israel, Jordan, Kazakhstan, Kuwait, Kyrgyzstan, Laos, Lebanon, Malaysia,
-Maldives, Mongolia, Myanmar, Nepal, North Korea, Oman, Pakistan, Palestine, Philippines, Qatar,
-Russia, Saudi Arabia, Singapore, Sri Lanka, Syria, Tajikistan, United Arab Emirates, Uzbekistan,
-Yemen, Taiwan, Timor-Leste
- */
+export default landmarkLinks;

@@ -6,6 +6,7 @@ import Quiz from "./quiz.js";
 import landmarkLinks from "./LandmarkLinks.js";
 import WelcomePopup from "./WelcomePopup";
 import "./quiz.css";
+import "./App.css";
 import "./streetview.css";
 
 const App = () => {
@@ -95,7 +96,11 @@ const App = () => {
       <title>GeoLink</title>
 
       {showWelcomePopup && <WelcomePopup onClose={() => setShowWelcomePopup(false)} />}
-      <h1>GeoLink</h1>
+      <div className="header-container">
+      <img src="/favicon.ico" alt="GeoLink Mascot" className="mascot" />
+        <h1 className="title">GeoLink</h1>
+      </div>
+
       <MapComponent onCountryClick={handleCountryClick} />
 
       {selectedCountry && (

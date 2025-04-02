@@ -121,4 +121,26 @@ body, html, button {
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
+.games-button {
+  position: absolute;
+  top: 40px; 
+  right: 40px;
+  background-color: #4a75f9;
+  color: white;
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease-in-out;
+  z-index: 999;
+}
+
+.games-button:hover {
+  background-color: #3657c3;
+  transform: scale(1.05);
+}
 

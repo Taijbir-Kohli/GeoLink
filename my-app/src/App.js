@@ -9,6 +9,8 @@ import "./quiz.css";
 import "./App.css";
 import "./streetview.css";
 import { useRef } from "react";
+import { Routes, Route, useNavigate } from "react-router-dom";
+import GamesPage from "./GamesPage"; // import the new page
 
 
 // Sidebar and Modal components
@@ -26,7 +28,8 @@ const App = () => {
   const [showWelcomePopup, setShowWelcomePopup] = useState(true);
   const [showLoginPopup, setShowLoginPopup] = useState(false);
   const countryInfoRef = useRef(null); 
-  const [flagUrl, setFlagUrl] = useState(null);
+  //const [flagUrl, setFlagUrl] = useState(null);
+  const navigate = useNavigate();
 
 
 
@@ -164,10 +167,15 @@ const App = () => {
     {/* Pullout Drawer */}
     <PulloutDrawer onLoginClick={() => setShowLoginPopup(true)} />
 
-      <div className="header-container">
+    <div className="header-container">
       <img src="/favicon.ico" alt="GeoLink logo" className="logo" />
-        <h1 className="title">GeoLink</h1>
-      </div>
+      <h1 className="title">GeoLink</h1>
+
+      {/* Games Button */}
+      <button className="games-button">Games</button>
+    </div>
+
+
 
       <MapComponent onCountryClick={handleCountryClick} />
 

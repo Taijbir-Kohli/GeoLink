@@ -1,8 +1,15 @@
 import { useState } from "react";
-import { MapContainer, TileLayer, GeoJSON, useMap, ZoomControl } from "react-leaflet";
+import {
+  MapContainer,
+  TileLayer,
+  GeoJSON,
+  useMap,
+  ZoomControl,
+} from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import countriesData from "./countries.json";
 import "./MapComponent.css";
+import Mascot from "./Mascot";
 
 // Recenter Button Component
 const RecenterButton = () => {
@@ -25,8 +32,11 @@ const brightColors = [
 ];
 
 const MapComponent = ({ onCountryClick }) => {
+  const [countryClicked, setCountryClicked] = useState(false);
+
   const onEachCountry = (feature, layer) => {
     const randomColor = brightColors[Math.floor(Math.random() * brightColors.length)];
+
     layer.setStyle({
       fillColor: randomColor,
       fillOpacity: 0.6,
@@ -44,6 +54,7 @@ const MapComponent = ({ onCountryClick }) => {
 
     layer.on("click", () => {
       onCountryClick(feature.properties.name);
+      setCountryClicked(true); // ⬅️ Hide mascot on click
     });
 
     const el = layer.getElement();
@@ -72,6 +83,9 @@ const MapComponent = ({ onCountryClick }) => {
         <GeoJSON data={countriesData} onEachFeature={onEachCountry} />
         <RecenterButton />
       </MapContainer>
+
+      {/*Hide mascot after country is clicked */}
+      {!countryClicked && <Mascot />}
     </div>
   );
 };

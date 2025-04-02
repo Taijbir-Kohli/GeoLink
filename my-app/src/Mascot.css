@@ -1,0 +1,48 @@
+/* Mascot.css */
+.globey-container {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    display: flex;
+    align-items: flex-end;
+    z-index: 500;
+  }
+  
+  .globey-img {
+    width: 100px;
+    height: auto;
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  .speech-bubble {
+    background: #fff9c4;
+    border: 1px solid #333;
+    border-radius: 25px;
+    padding: 8px 15px;
+    margin-left: -30px;
+    margin-bottom: 80px;
+    font-size: 0.9rem;
+    max-width: 220px;
+    box-shadow: 3px 3px 8px rgba(0,0,0,0.1);
+    position: relative;
+    font-family: 'Fredoka', sans-serif;
+  }
+  
+  .speech-bubble::after {
+    content: "";
+    position: absolute;
+    bottom: -18px;
+    left: 25px;
+    width: 0;
+    height: 0;
+    border: 10px solid transparent;
+    border-top-color: #fff9c4;
+    border-bottom: 0;
+  }
+  
+  @keyframes float {
+    0%   { transform: translateY(0); }
+    50%  { transform: translateY(-8px); }
+    100% { transform: translateY(0); }
+  }
+  

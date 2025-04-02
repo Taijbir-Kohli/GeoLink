@@ -1,7 +1,7 @@
 import { useState } from "react";
 import MapComponent from "./MapComponent";
-import historyData from "./HistoryData";
-import quizData from "./QuizData";
+// import historyData from "./HistoryData";
+// import quizData from "./QuizData";
 import Quiz from "./quiz.js";
 import landmarkLinks from "./LandmarkLinks.js";
 import WelcomePopup from "./WelcomePopup";
@@ -9,6 +9,7 @@ import "./quiz.css";
 import "./App.css";
 import "./streetview.css";
 import { useRef } from "react";
+
 
 // Sidebar and Modal components
 import PulloutDrawer from './PulloutDrawer.js';
@@ -25,6 +26,8 @@ const App = () => {
   const [showWelcomePopup, setShowWelcomePopup] = useState(true);
   const [showLoginPopup, setShowLoginPopup] = useState(false);
   const countryInfoRef = useRef(null); 
+  const [flagUrl, setFlagUrl] = useState(null);
+
 
 
   let speechSynthesisInstance = window.speechSynthesis;

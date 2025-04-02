@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { auth } from "./firebaseConfig";
-import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "./firebaseConfig"; // Import your Firebase auth configuration
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword, sendEmailVerification } from "firebase/auth";
 import "./LoginPopup.css";
 
 const LoginPopup = ({ onClose }) => {
@@ -9,23 +9,44 @@ const LoginPopup = ({ onClose }) => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
 
+  // Function to handle form submission
   const handleAuth = async () => {
     try {
       if (isSignUp) {
         // Handle Sign-Up
         const userCredential = await createUserWithEmailAndPassword(auth, email, password);
         console.log("User signed up:", userCredential.user);
-        alert("Sign-up successful! Please log in.");
+
+        // Send email verification
+        await sendEmailVerification(userCredential.user);
+        console.log("Verification email sent!");
+
+        alert("Sign-up successful! Please check your email to verify your account.");
         setIsSignUp(false); // Switch to login mode after sign-up
       } else {
         // Handle Login
         const userCredential = await signInWithEmailAndPassword(auth, email, password);
-        localStorage.setItem("token", await userCredential.user.getIdToken());
-        console.log("User logged in:", userCredential.user);
+        const user = userCredential.user;
+
+        // Check if email is verified
+        if (!user.emailVerified) {
+          alert("Please verify your email before logging in.");
+          return;
+        }
+
+        localStorage.setItem("token", await user.getIdToken());
+        console.log("User logged in:", user);
         onClose(); // Close login popup on success
       }
     } catch (error) {
-      setError(error.message);
+      setError(error.message); // Show error if login/signup fails
+    }
+  };
+
+  // Function to handle Enter key press
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      handleAuth();
     }
   };
 
@@ -39,12 +60,14 @@ const LoginPopup = ({ onClose }) => {
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          onKeyPress={handleKeyPress} // Add Enter key handler
         />
         <input
           type="password"
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          onKeyPress={handleKeyPress} // Add Enter key handler
         />
         <button className="action-btn" onClick={handleAuth}>
           {isSignUp ? "Sign Up" : "Login"}

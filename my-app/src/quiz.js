@@ -1,16 +1,41 @@
 import React, { useState } from "react";
+import { getFirestore, doc, setDoc, getDoc } from "firebase/firestore";
+import { auth } from "./firebaseConfig"; // Import Firebase auth
 import "./quiz.css";
 
 const Quiz = ({ selectedCountry, quizQuestions, onClose }) => {
   const [selectedAnswers, setSelectedAnswers] = useState({});
   const [submitted, setSubmitted] = useState(false);
+  const db = getFirestore();
 
   const handleAnswerSelect = (question, answer) => {
     setSelectedAnswers((prev) => ({ ...prev, [question]: answer }));
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     setSubmitted(true);
+    const user = auth.currentUser;
+    if (!user) {
+      alert("You need to log in to save quiz results.");
+      return;
+    }
+
+    // Calculate score
+    const correctAnswers = quizQuestions.filter(
+      (q) => selectedAnswers[q.question] === q.answer
+    ).length;
+    const totalQuestions = quizQuestions.length;
+    const score = `${correctAnswers} / ${totalQuestions}`;
+
+    // Save result to Firestore
+    const userQuizRef = doc(db, "quizResults", user.uid);
+    const userData = await getDoc(userQuizRef);
+
+    let userResults = userData.exists() ? userData.data() : {};
+
+    userResults[selectedCountry] = score; // Store result for selected country
+
+    await setDoc(userQuizRef, userResults);
   };
 
   return (

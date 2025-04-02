@@ -184,9 +184,6 @@ const App = () => {
     <div>
       {/* Pass the user state and handleLoginClick to PulloutDrawer */}
       <PulloutDrawer onLoginClick={handleLoginClick} user={user} />
-
-      {/* Show login popup if needed */}
-      {showLoginPopup && <LoginPopup onClose={handleCloseLoginPopup} />}
     </div>
 
     <div className="header-container">

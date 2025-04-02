@@ -144,3 +144,30 @@ body, html, button {
   transform: scale(1.05);
 }
 
+.game-card {
+  background-color: #fef3a5;
+  padding: 30px;
+  border-radius: 20px;
+  width: 300px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+  text-align: center;
+  border: 2px solid #4a75f9;
+}
+
+.game-card:hover {
+  background-color: #fff69a;
+  transform: translateY(-5px) scale(1.02);
+}
+
+.game-card h2 {
+  margin-bottom: 10px;
+  color: #4a75f9;
+  font-size: 1.6rem;
+}
+
+.game-card p {
+  font-size: 1rem;
+  color: #333;
+}

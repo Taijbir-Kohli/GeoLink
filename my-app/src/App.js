@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "./firebaseConfig";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import MapComponent from "./MapComponent";
 // import historyData from "./HistoryData";
 // import quizData from "./QuizData";
@@ -10,15 +11,14 @@ import WelcomePopup from "./WelcomePopup";
 import "./quiz.css";
 import "./App.css";
 import "./streetview.css";
-import { useRef } from "react";
-import { Routes, Route, useNavigate } from "react-router-dom";
-import GamesPage from "./GamesPage"; // import the new page
+import GamesPage from "./GamesPage";
+import FlagQuiz from "./FlagQuiz";
+import LandmarkMatch from "./LandmarkMatch";
 
 
 // Sidebar and Modal components
 import PulloutDrawer from './PulloutDrawer.js';
 import LoginPopup from './LoginPopup';
-
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -31,8 +31,7 @@ const App = () => {
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [showWelcomePopup, setShowWelcomePopup] = useState(true);
   const [showLoginPopup, setShowLoginPopup] = useState(false);
-  const countryInfoRef = useRef(null); 
-  //const [flagUrl, setFlagUrl] = useState(null);
+  const countryInfoRef = useRef(null);
   const navigate = useNavigate();
   let speechSynthesisInstance = window.speechSynthesis;
 
@@ -55,12 +54,8 @@ const App = () => {
     setShowLoginPopup(false);
   };
 
-
-
   const fetchCountryHistory = async (countryName) => {
-    // For backend testing
     try {
-      // Fetch from Spring Boot API first
       const response = await fetch(`http://localhost:8080/api/countries/${countryName}`);
       if (response.ok) {
         const data = await response.text();
@@ -69,21 +64,8 @@ const App = () => {
     } catch (error) {
       console.error("Spring Boot API unavailable, trying Wikipedia...");
     }
-    // For real time deployment through wiki
-  //   try {
-  //     const wikiResponse = await fetch(
-  //       `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(countryName)}`
-  //     );
-  //     if (wikiResponse.ok) {
-  //       const wikiData = await wikiResponse.json();
-  //       return wikiData.extract || "No history available.";
-  //     }
-  //   } catch (error) {
-  //     console.error("Wikipedia API failed, using local fallback.");
-  //   }
-  //   return historyData[countryName] || "No history available.";
-  // };
   };
+
   const handleCountryClick = async (countryName) => {
     if (isSpeaking) {
       speechSynthesisInstance.cancel();
@@ -96,23 +78,9 @@ const App = () => {
     if (countryInfoRef.current) {
       setTimeout(() => {
         countryInfoRef.current.scrollIntoView({ behavior: "smooth" });
-      }, 200); // slight delay to allow render
-    }    
-    // setHistory(historyData[countryName] || "No history available.");
-  }; 
-
-  // For realtime deployment on render
-  // const fetchQuiz = async (country) => {
-  //   try {
-  //     const response = await fetch(`https://geolink-backend-latest.onrender.com/api/quizzes/${encodeURIComponent(country)}`);
-  //     const data = await response.json();
-  //     console.log(`Quiz data for ${country}:`, data); // Debugging line
-  //     return data;
-  //   } catch (error) {
-  //     console.error("Quiz API failed.", error);
-  //   }
-  //   return [];
-  // };
+      }, 200);
+    }
+  };
 
   const fetchQuiz = async (country) => {
     try {
@@ -141,22 +109,21 @@ const App = () => {
   };
 
   const enterFullscreen = () => {
-  const iframe = document.getElementById("streetview-iframe");
-  if (iframe) {
-    if (iframe.requestFullscreen) {
-      iframe.requestFullscreen();
-    } else if (iframe.webkitRequestFullscreen) {
-      iframe.webkitRequestFullscreen();
-    } else if (iframe.mozRequestFullScreen) {
-      iframe.mozRequestFullScreen();
-    } else if (iframe.msRequestFullscreen) {
-      iframe.msRequestFullscreen();
-    } else {
-      alert("Fullscreen not supported on this browser.");
+    const iframe = document.getElementById("streetview-iframe");
+    if (iframe) {
+      if (iframe.requestFullscreen) {
+        iframe.requestFullscreen();
+      } else if (iframe.webkitRequestFullscreen) {
+        iframe.webkitRequestFullscreen();
+      } else if (iframe.mozRequestFullScreen) {
+        iframe.mozRequestFullScreen();
+      } else if (iframe.msRequestFullscreen) {
+        iframe.msRequestFullscreen();
+      } else {
+        alert("Fullscreen not supported on this browser.");
+      }
     }
-  }
-};
-
+  };
 
   const toggleSpeech = () => {
     if (isSpeaking) {
@@ -176,91 +143,94 @@ const App = () => {
   };
 
   return (
-    <div>
-      <title>GeoLink</title>
+    <Routes>
+      <Route
+        path="/"
+        element={
+          <div>
+            <title>GeoLink</title>
 
-      {showWelcomePopup && <WelcomePopup onClose={() => setShowWelcomePopup(false)} />}
-        
-    <div>
-      {/* Pass the user state and handleLoginClick to PulloutDrawer */}
-      <PulloutDrawer onLoginClick={handleLoginClick} user={user} />
-    </div>
+            {showWelcomePopup && <WelcomePopup onClose={() => setShowWelcomePopup(false)} />}
 
-    <div className="header-container">
-      <img src="/favicon.ico" alt="GeoLink logo" className="logo" />
-      <h1 className="title">GeoLink</h1>
+            <PulloutDrawer onLoginClick={handleLoginClick} user={user} />
 
-      {/* Games Button */}
-      <button className="games-button">Games</button>
-    </div>
-
-
-
-      <MapComponent onCountryClick={handleCountryClick} />
-
-      {selectedCountry && (
-        <div className="country-info-wrapper" ref={countryInfoRef}>
-          <div className="country-info">
-            <h2>{selectedCountry}</h2>
-            <p>{history}</p>
-            <div className="button-group">
-              <button className="more-info-button" onClick={() => openQuiz(selectedCountry)}>
-                Take Quiz
-              </button>
-              <button className="street-view-button" onClick={() => openStreetView(selectedCountry)}>
-                360° View
-              </button>
-              <button className="read-aloud-button" onClick={toggleSpeech}>
-                {isSpeaking ? "🔇 Stop" : "🔊 Read Aloud"}
+            <div className="header-container">
+              <img src="/favicon.ico" alt="GeoLink logo" className="logo" />
+              <h1 className="title">GeoLink</h1>
+              <button className="games-button" onClick={() => navigate("/games")}>
+                Games
               </button>
             </div>
+
+            <MapComponent onCountryClick={handleCountryClick} />
+
+            {selectedCountry && (
+              <div className="country-info-wrapper" ref={countryInfoRef}>
+                <div className="country-info">
+                  <h2>{selectedCountry}</h2>
+                  <p>{history}</p>
+                  <div className="button-group">
+                    <button className="more-info-button" onClick={() => openQuiz(selectedCountry)}>
+                      Take Quiz
+                    </button>
+                    <button className="street-view-button" onClick={() => openStreetView(selectedCountry)}>
+                      360° View
+                    </button>
+                    <button className="read-aloud-button" onClick={toggleSpeech}>
+                      {isSpeaking ? "🔇 Stop" : "🔊 Read Aloud"}
+                    </button>
+                  </div>
+                </div>
+                <div className="flag-box">
+                  <img src="/img/test.jpg" alt={`${selectedCountry} flag`} className="flag-image" />
+                </div>
+              </div>
+            )}
+
+            {showPopup && selectedQuiz && (
+              <Quiz
+                selectedCountry={selectedCountry}
+                quizQuestions={selectedQuiz}
+                onClose={() => setShowPopup(false)}
+              />
+            )}
+
+            {showStreetView && (
+              <div className="streetview-overlay" onClick={() => setShowStreetView(false)}>
+                <div className="streetview-content" onClick={(e) => e.stopPropagation()}>
+                  <h2>360° View - {selectedCountry}</h2>
+                  <iframe
+                    id="streetview-iframe"
+                    src={streetViewUrl}
+                    title="Street View"
+                    allowFullScreen
+                    loading="lazy"
+                  ></iframe>
+                  <div className="button-bar">
+                    <button className="action-button" onClick={enterFullscreen}>
+                      Full Screen
+                    </button>
+                    <button className="action-button" onClick={() => setShowStreetView(false)}>
+                      Close
+                    </button>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {showLoginPopup && (
+              <div className="login-popup">
+                <LoginPopup onClose={handleCloseLoginPopup} />
+              </div>
+            )}
           </div>
-          <div className="flag-box">
-            <img src="/img/test.jpg" alt={`${selectedCountry} flag`} className="flag-image" />
-          </div>
-        </div>
-      )}
+        }
+      />
 
-
-
-      {showPopup && selectedQuiz && (
-        <Quiz
-          selectedCountry={selectedCountry}
-          quizQuestions={selectedQuiz}
-          onClose={() => setShowPopup(false)}
-        />
-      )}
-
-      {showStreetView && (
-        <div className="streetview-overlay" onClick={() => setShowStreetView(false)}>
-          <div className="streetview-content" onClick={(e) => e.stopPropagation()}>
-            <h2>360° View - {selectedCountry}</h2>
-            <iframe
-              id="streetview-iframe"
-              src={streetViewUrl}
-              title="Street View"
-              allowFullScreen
-              loading="lazy"
-            ></iframe>
-            <div className="button-bar">
-              <button className="action-button" onClick={enterFullscreen}>
-                Full Screen
-              </button>
-              <button className="action-button" onClick={() => setShowStreetView(false)}>
-                Close
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* Login Popup */}
-      {showLoginPopup && (
-      <div className="login-popup">
-        <LoginPopup onClose={() => setShowLoginPopup(false)} />
-      </div>
-    )}
-    </div>
+      <Route path="/games" element={<GamesPage />} />
+      <Route path="/FlagQuiz" element={<FlagQuiz />} />
+      <Route path="/LandmarkMatch" element={<LandmarkMatch />} />
+    </Routes>
   );
 };
 

@@ -10,6 +10,9 @@ import "./App.css";
 import "./streetview.css";
 import { useRef } from "react";
 
+// Sidebar and Modal components
+import PulloutDrawer from './PulloutDrawer.js';
+import LoginPopup from './LoginPopup';
 
 const App = () => {
   const [selectedCountry, setSelectedCountry] = useState(null);
@@ -20,10 +23,16 @@ const App = () => {
   const [streetViewUrl, setStreetViewUrl] = useState("");
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [showWelcomePopup, setShowWelcomePopup] = useState(true);
+  const [showLoginPopup, setShowLoginPopup] = useState(false);
   const countryInfoRef = useRef(null); 
 
 
   let speechSynthesisInstance = window.speechSynthesis;
+
+  const handleLoginClick = () => {
+    setShowLoginPopup(true);
+  };
+
 
   const fetchCountryHistory = async (countryName) => {
     // For backend testing
@@ -148,6 +157,10 @@ const App = () => {
       <title>GeoLink</title>
 
       {showWelcomePopup && <WelcomePopup onClose={() => setShowWelcomePopup(false)} />}
+        
+    {/* Pullout Drawer */}
+    <PulloutDrawer onLoginClick={() => setShowLoginPopup(true)} />
+
       <div className="header-container">
       <img src="/favicon.ico" alt="GeoLink logo" className="logo" />
         <h1 className="title">GeoLink</h1>
@@ -210,6 +223,13 @@ const App = () => {
           </div>
         </div>
       )}
+
+      {/* Login Popup */}
+      {showLoginPopup && (
+      <div className="login-popup">
+        <LoginPopup onClose={() => setShowLoginPopup(false)} />
+      </div>
+    )}
     </div>
   );
 };

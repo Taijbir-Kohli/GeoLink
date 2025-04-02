@@ -1,0 +1,68 @@
+.drawer {
+  position: fixed;
+  top: 0;
+  left: -300px;
+  width: 250px;
+  height: 100%;
+  background: #fef3a5; /* Background to match the header color */
+  color: #4a75f9; /* Text color to match title color */
+  transition: 0.3s;
+  padding: 20px;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+  z-index: 2000;
+  text-align: center;
+  font-family: 'Fredoka', sans-serif;
+}
+
+.drawer.open {
+  left: 0;
+}
+
+.drawer h2 {
+  margin-top: 30px;
+  color: #4a75f9; /* Heading text color to match title color */
+}
+
+.drawer-toggle {
+  position: fixed;
+  top: 40px;
+  left: 20px;
+  background: #4a75f9; /* Button background to match title color */
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+  z-index: 3000;
+  border-radius: 8px; /* Rounded corners for the button */
+}
+
+.drawer-toggle:hover {
+  background: #1a53ff; /* Hover effect for the button */
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  float: right;
+}
+
+.login-btn {
+  background: #f0f0f0; /* Light button background */
+  color: #4a75f9; /* Text color to match title color */
+  padding: 10px;
+  border: none;
+  width: 100%;
+  margin-top: 20px;
+  cursor: pointer;
+  font-weight: 600; /* Bold font for the login button */
+  border-radius: 8px; /* Rounded corners for the button */
+  transition: background-color 0.3s ease;
+}
+
+.login-btn:hover {
+  background-color: #e0e0e0; /* Light hover effect */
+}

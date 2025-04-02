@@ -20,7 +20,7 @@ body, html, button {
 .header-container {
   position: sticky;
   top: 0;
-  z-index: 998; /* make sure it stays on top */
+  z-index: 995; /* make sure it stays on top */
   display: flex;
   align-items: center;
   background-color: #fef3a5;

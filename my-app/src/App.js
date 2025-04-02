@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { onAuthStateChanged, signOut } from "firebase/auth";
+import { auth } from "./firebaseConfig";
 import MapComponent from "./MapComponent";
 // import historyData from "./HistoryData";
 // import quizData from "./QuizData";
@@ -17,7 +19,9 @@ import GamesPage from "./GamesPage"; // import the new page
 import PulloutDrawer from './PulloutDrawer.js';
 import LoginPopup from './LoginPopup';
 
+
 const App = () => {
+  const [user, setUser] = useState(null);
   const [selectedCountry, setSelectedCountry] = useState(null);
   const [history, setHistory] = useState("");
   const [showPopup, setShowPopup] = useState(false);
@@ -30,14 +34,27 @@ const App = () => {
   const countryInfoRef = useRef(null); 
   //const [flagUrl, setFlagUrl] = useState(null);
   const navigate = useNavigate();
-
-
-
   let speechSynthesisInstance = window.speechSynthesis;
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+    });
+  }, []);
+
+  const handleLogout = async () => {
+    await signOut(auth);
+    setUser(null);
+  };
 
   const handleLoginClick = () => {
     setShowLoginPopup(true);
   };
+
+  const handleCloseLoginPopup = () => {
+    setShowLoginPopup(false);
+  };
+
 
 
   const fetchCountryHistory = async (countryName) => {
@@ -164,8 +181,13 @@ const App = () => {
 
       {showWelcomePopup && <WelcomePopup onClose={() => setShowWelcomePopup(false)} />}
         
-    {/* Pullout Drawer */}
-    <PulloutDrawer onLoginClick={() => setShowLoginPopup(true)} />
+    <div>
+      {/* Pass the user state and handleLoginClick to PulloutDrawer */}
+      <PulloutDrawer onLoginClick={handleLoginClick} user={user} />
+
+      {/* Show login popup if needed */}
+      {showLoginPopup && <LoginPopup onClose={handleCloseLoginPopup} />}
+    </div>
 
     <div className="header-container">
       <img src="/favicon.ico" alt="GeoLink logo" className="logo" />

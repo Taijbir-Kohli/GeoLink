@@ -18,6 +18,7 @@ const PulloutDrawer = ({ onLoginClick, user }) => {
       
       if (userData.exists()) {
         setQuizResults(userData.data());
+        fetchQuizResults();
       }
     };
     

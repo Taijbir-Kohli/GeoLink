@@ -35,14 +35,35 @@ const Quiz = ({ selectedCountry, quizQuestions, onClose }) => {
       username: user.displayName || "Anonymous",
       quizScores: {},
       totalScore: 0,
+      totalCorrectAnswers: 0,
+      totalQuestions: 0,
     };
 
     // Store individual result for selected country
     userResults.quizScores[selectedCountry] = score;
 
-    // Update total score
-    const newTotalScore = Object.values(userResults.quizScores).reduce((sum, score) => sum + score, 0);
-    userResults.totalScore = newTotalScore;
+    // Update total correct answers
+    const newTotalCorrectAnswers = Object.values(userResults.quizScores).reduce((sum, score) => {
+      const correct = parseInt(score.split(' / ')[0]); // Extract correct answers from fraction (e.g., "1/3")
+      return sum + correct;
+    }, 0);
+    userResults.totalCorrectAnswers = newTotalCorrectAnswers;
+
+    // Update total correct answers
+    const newTotalQuestions = Object.values(userResults.quizScores).reduce((sum, score) => {
+      const correct = parseInt(score.split(' / ')[1]); // Extract correct answers from fraction (e.g., "1/3")
+      return sum + correct;
+    }, 0);
+    userResults.totalQuestions = newTotalQuestions;
+
+    // Update total score as a percentage (optional)
+    const totalPossibleAnswers = quizQuestions.length * Object.keys(userResults.quizScores).length;
+    const percentage = ((newTotalCorrectAnswers / totalPossibleAnswers) * 100).toFixed(2);
+    userResults.totalScore = percentage;
+
+    // // Update total score
+    // const newTotalScore = Object.values(userResults.quizScores).reduce((sum, score) => sum + score, 0);
+    // userResults.totalScore = newTotalScore;
 
     // Save updated data to Firestore
     await setDoc(userQuizRef, userResults);

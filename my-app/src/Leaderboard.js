@@ -13,13 +13,21 @@ const Leaderboard = () => {
       const snapshot = await getDocs(quizResultsCollection);
       const users = snapshot.docs.map((doc) => doc.data());
       
-      // Sort users by totalScore in descending order
+      // Sort users by totalScore (percentage) in descending order
       const sortedUsers = users
-        .map((user) => ({
-          username: user.username,
-          totalScore: user.totalScore || 0,
-        }))
-        .sort((a, b) => b.totalScore - a.totalScore);
+        .map((user) => {
+          // Calculate total score as percentage (if available)
+          const totalQuestions = user.totalQuestions || 0; // Total number of questions attempted
+          const totalCorrectAnswers = user.totalCorrectAnswers || 0;
+          const percentage = user.totalScore;
+          return {
+            username: user.username,
+            totalCorrectAnswers,
+            totalQuestions,
+            percentage,
+          };
+        })
+        .sort((a, b) => b.percentage - a.percentage); // Sort by percentage, descending
 
       setLeaderboard(sortedUsers);
     };
@@ -35,7 +43,9 @@ const Leaderboard = () => {
           <tr>
             <th>Rank</th>
             <th>Username</th>
-            <th>Score</th>
+            <th>Total Correct Answers</th>
+            <th>Total Questions Attempted</th>
+            <th>Total Percentage</th>
           </tr>
         </thead>
         <tbody>
@@ -43,7 +53,9 @@ const Leaderboard = () => {
             <tr key={index}>
               <td>{index + 1}</td>
               <td>{user.username}</td>
-              <td>{user.totalScore}</td>
+              <td>{user.totalCorrectAnswers}</td> {/* Display total correct answers */}
+              <td>{user.totalQuestions}</td>
+              <td>{user.percentage}%</td> {/* Display percentage */}
             </tr>
           ))}
         </tbody>

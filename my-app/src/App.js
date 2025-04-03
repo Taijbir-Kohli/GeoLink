@@ -54,17 +54,33 @@ const App = () => {
     setShowLoginPopup(false);
   };
 
+
   const fetchCountryHistory = async (countryName) => {
     try {
-      const response = await fetch(`http://localhost:8080/api/countries/${countryName}`);
-      if (response.ok) {
-        const data = await response.text();
-        return data;
+      const countryRef = ref(db, 'CountryData/' + countryName);
+      const snapshot = await get(countryRef);
+      if (snapshot.exists()) {
+        return snapshot.val(); // Return the country's history data
+      } else {
+        console.log("No history found for this country.");
       }
     } catch (error) {
-      console.error("Spring Boot API unavailable, trying Wikipedia...");
+      console.error("Error fetching country history:", error);
     }
   };
+  
+  // OLD IMPLEMENTATION THROUGH SPRING
+  // const fetchCountryHistory = async (countryName) => {
+  //   try {
+  //     const response = await fetch(`http://localhost:8080/api/countries/${countryName}`);
+  //     if (response.ok) {
+  //       const data = await response.text();
+  //       return data;
+  //     }
+  //   } catch (error) {
+  //     console.error("Spring Boot API unavailable, trying Wikipedia...");
+  //   }
+  // };
 
 
   // FOR REAL TIME DEPLOYMENT ON WIKI ------- DO NOT DELETE

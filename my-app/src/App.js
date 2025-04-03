@@ -259,12 +259,13 @@ const App = () => {
                   </div>
                 </div>
                 <div className="flag-box">
-                <img src={getCountryCode(selectedCountry) ? `https://flagsapi.com/${getCountryCode(selectedCountry)}/flat/64.png` : "/img/default-flag.png"
-                  }
-                  alt={`${selectedCountry} flag`}
-                  className="flag-image"
-                />
-
+                  {getCountryCode(selectedCountry) && (
+                    <img
+                      src={`https://flagsapi.com/${getCountryCode(selectedCountry)}/flat/64.png`}
+                      alt={`${selectedCountry} flag`}
+                      className="flag-image"
+                    />
+                  )}
                 </div>
               </div>
             )}

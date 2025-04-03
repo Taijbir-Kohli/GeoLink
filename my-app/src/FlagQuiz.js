@@ -8,6 +8,8 @@ const FlagQuiz = () => {
   const navigate = useNavigate();
   const [selectedCountry, setSelectedCountry] = useState(null);
   const [targetCountry, setTargetCountry] = useState(null);
+  const [usedCountries, setUsedCountries] = useState([]); // ← track used countries
+  const [gameOver, setGameOver] = useState(false);
 
   const getCountryCode = (name) => {
     const country = require("iso-3166-1-alpha-2").getCode(name);
@@ -16,16 +18,24 @@ const FlagQuiz = () => {
 
   const pickRandomCountry = () => {
     const allValidCountries = countriesData.features
-      .map(f => f.properties.name)
-      .filter(name => getCountryCode(name)); // Only valid ISO
+      .map((f) => f.properties.name)
+      .filter((name) => getCountryCode(name));
 
-    const newTarget = allValidCountries[Math.floor(Math.random() * allValidCountries.length)];
+    const available = allValidCountries.filter((name) => !usedCountries.includes(name));
+
+    if (available.length === 0) {
+      setGameOver(true);
+      return;
+    }
+
+    const newTarget = available[Math.floor(Math.random() * available.length)];
     setTargetCountry(newTarget);
-    setSelectedCountry(null); // Reset selection
+    setSelectedCountry(null);
+    setUsedCountries((prev) => [...prev, newTarget]);
   };
 
   useEffect(() => {
-    pickRandomCountry(); // On load
+    pickRandomCountry();
   }, []);
 
   const handleCountrySelect = (country) => {
@@ -47,83 +57,98 @@ const FlagQuiz = () => {
       </div>
 
       {/* Main Content */}
-      <div style={{
-        display: "flex",
-        justifyContent: "center",
-        gap: "40px",
-        alignItems: "flex-start",
-        padding: "40px",
-        fontFamily: "Fredoka, sans-serif"
-      }}>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          gap: "40px",
+          alignItems: "flex-start",
+          padding: "40px",
+          fontFamily: "Fredoka, sans-serif",
+        }}
+      >
         {/* Map */}
         <div style={{ flex: "0 0 60%", minWidth: "500px" }}>
           <FlagQuizMap onCountryClick={handleCountrySelect} />
         </div>
 
         {/* Flag Info */}
-        <div style={{
-          flex: "1",
-          background: "#fef3a5",
-          padding: "30px",
-          borderRadius: "12px",
-          boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
-          minWidth: "250px",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          textAlign: "center"
-        }}>
+        <div
+          style={{
+            flex: "1",
+            background: "#fef3a5",
+            padding: "30px",
+            borderRadius: "12px",
+            boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+            minWidth: "250px",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            textAlign: "center",
+          }}
+        >
           <h2 style={{ marginBottom: "20px" }}>🧠 Flag Quiz</h2>
 
-          {targetCountry && countryCode ? (
-            <img
-              src={`https://flagsapi.com/${countryCode}/flat/64.png`}
-              alt={`${targetCountry} flag`}
-              className="flag-image"
-              style={{
-                marginBottom: "20px",
-                borderRadius: "10px",
-                boxShadow: "0 4px 12px rgba(0,0,0,0.2)"
-              }}
-            />
-          ) : (
-            <p>Loading flag...</p>
-          )}
-
-          {selectedCountry && (
+          {gameOver ? (
             <>
-              <p>
-                You selected: <strong>{selectedCountry}</strong>
-              </p>
-              <h3 style={{
-                color: isCorrect ? "#4caf50" : "#f44336",
-                marginTop: "10px"
-              }}>
-                {isCorrect ? "✅ Correct!" : "❌ Try Again!"}
-              </h3>
+              <p>🎉 You've guessed all the flags for this session!</p>
+              <p>Refresh the page to start again.</p>
             </>
-          )}
+          ) : (
+            <>
+              {targetCountry && countryCode ? (
+                <img
+                  src={`https://flagsapi.com/${countryCode}/flat/64.png`}
+                  alt={`${targetCountry} flag`}
+                  className="flag-image"
+                  style={{
+                    marginBottom: "20px",
+                    borderRadius: "10px",
+                    boxShadow: "0 4px 12px rgba(0,0,0,0.2)",
+                  }}
+                />
+              ) : (
+                <p>Loading flag...</p>
+              )}
 
-          {!selectedCountry && <p>Click a country to guess the flag!</p>}
+              {selectedCountry && (
+                <>
+                  <p>
+                    You selected: <strong>{selectedCountry}</strong>
+                  </p>
+                  <h3
+                    style={{
+                      color: isCorrect ? "#4caf50" : "#f44336",
+                      marginTop: "10px",
+                    }}
+                  >
+                    {isCorrect ? "✅ Correct!" : "❌ Try Again!"}
+                  </h3>
+                </>
+              )}
 
-          {isCorrect && (
-            <button
-              onClick={pickRandomCountry}
-              style={{
-                marginTop: "20px",
-                padding: "10px 20px",
-                backgroundColor: "#4a75f9",
-                color: "white",
-                fontSize: "1rem",
-                fontWeight: "bold",
-                border: "none",
-                borderRadius: "10px",
-                cursor: "pointer",
-                boxShadow: "0 4px 10px rgba(0,0,0,0.2)"
-              }}
-            >
-              🎉 Next Flag
-            </button>
+              {!selectedCountry && <p>Click a country to guess the flag!</p>}
+
+              {isCorrect && (
+                <button
+                  onClick={pickRandomCountry}
+                  style={{
+                    marginTop: "20px",
+                    padding: "10px 20px",
+                    backgroundColor: "#4a75f9",
+                    color: "white",
+                    fontSize: "1rem",
+                    fontWeight: "bold",
+                    border: "none",
+                    borderRadius: "10px",
+                    cursor: "pointer",
+                    boxShadow: "0 4px 10px rgba(0,0,0,0.2)",
+                  }}
+                >
+                  🎉 Next Flag
+                </button>
+              )}
+            </>
           )}
         </div>
       </div>

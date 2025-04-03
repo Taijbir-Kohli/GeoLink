@@ -11,18 +11,27 @@ const LandmarkMatch = () => {
   const [showResult, setShowResult] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
   const [selectedAnswer, setSelectedAnswer] = useState("");
+  const [usedCountries, setUsedCountries] = useState([]);
+  const [gameOver, setGameOver] = useState(false);
 
-  const getRandomCountries = (excludeCountry) => {
-    const countries = Object.keys(landmarkLinks).filter(c => c !== excludeCountry);
-    const shuffled = countries.sort(() => 0.5 - Math.random());
+  const getRandomCountries = (excludeCountry, allOptions) => {
+    const filtered = allOptions.filter((c) => c !== excludeCountry);
+    const shuffled = filtered.sort(() => 0.5 - Math.random());
     return shuffled.slice(0, 3);
   };
 
   const generateQuestion = () => {
     const allCountries = Object.keys(landmarkLinks);
-    const randomCountry = allCountries[Math.floor(Math.random() * allCountries.length)];
+    const available = allCountries.filter(c => !usedCountries.includes(c));
+
+    if (available.length === 0) {
+      setGameOver(true);
+      return;
+    }
+
+    const randomCountry = available[Math.floor(Math.random() * available.length)];
     const landmark = landmarkLinks[randomCountry];
-    const wrongAnswers = getRandomCountries(randomCountry);
+    const wrongAnswers = getRandomCountries(randomCountry, allCountries);
     const options = [...wrongAnswers, randomCountry].sort(() => 0.5 - Math.random());
 
     setCorrectCountry(randomCountry);
@@ -30,6 +39,7 @@ const LandmarkMatch = () => {
     setRandomOptions(options);
     setShowResult(false);
     setSelectedAnswer("");
+    setUsedCountries(prev => [...prev, randomCountry]);
   };
 
   useEffect(() => {
@@ -58,50 +68,56 @@ const LandmarkMatch = () => {
         <h1>🗺️ Landmark Match</h1>
         <p>Can you guess the country of this landmark?</p>
 
-        {/* Landmark View & Options side-by-side */}
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "flex-start",
-            gap: "40px",
-            flexWrap: "wrap",
-            marginTop: "30px",
-          }}
-        >
-          {/* Iframe Section */}
-          <iframe
-            src={iframeUrl}
-            title="Landmark View"
-            width="800"
-            height="450"
+        {/* Game Over */}
+        {gameOver ? (
+          <div style={{ marginTop: "40px", textAlign: "center" }}>
+            <h2>🎉 You've completed all landmarks!</h2>
+            <p>Refresh the page to play again.</p>
+          </div>
+        ) : (
+          <div
             style={{
-              borderRadius: "12px",
-              boxShadow: "0 4px 10px rgba(0,0,0,0.2)",
-              border: "none",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "flex-start",
+              gap: "40px",
+              flexWrap: "wrap",
+              marginTop: "30px",
             }}
-            allowFullScreen
-            loading="lazy"
-          ></iframe>
+          >
+            {/* Iframe Section */}
+            <iframe
+              src={iframeUrl}
+              title="Landmark View"
+              width="800"
+              height="450"
+              style={{
+                borderRadius: "12px",
+                boxShadow: "0 4px 10px rgba(0,0,0,0.2)",
+                border: "none",
+              }}
+              allowFullScreen
+              loading="lazy"
+            ></iframe>
 
             {/* Answer Options on the Right */}
             <div
-            style={{
+              style={{
                 display: "flex",
                 flexDirection: "column",
                 gap: "20px",
                 alignItems: "center",
-            }}
+              }}
             >
-            <h3 style={{ fontSize: "1.2rem", marginBottom: "10px", fontWeight: "600" }}>
+              <h3 style={{ fontSize: "1.2rem", marginBottom: "10px", fontWeight: "600" }}>
                 Pick the Correct Answer
-            </h3>
+              </h3>
 
-            {randomOptions.map((country, idx) => (
+              {randomOptions.map((country, idx) => (
                 <button
-                key={idx}
-                onClick={() => handleAnswer(country)}
-                style={{
+                  key={idx}
+                  onClick={() => handleAnswer(country)}
+                  style={{
                     padding: "12px 24px",
                     fontSize: "1rem",
                     fontFamily: "Fredoka, sans-serif",
@@ -112,18 +128,19 @@ const LandmarkMatch = () => {
                     cursor: "pointer",
                     boxShadow: "0 4px 10px rgba(0,0,0,0.2)",
                     transition: "0.2s ease-in-out",
-                }}
-                onMouseOver={(e) => (e.target.style.backgroundColor = "#3657c3")}
-                onMouseOut={(e) => (e.target.style.backgroundColor = "#4a75f9")}
+                  }}
+                  onMouseOver={(e) => (e.target.style.backgroundColor = "#3657c3")}
+                  onMouseOut={(e) => (e.target.style.backgroundColor = "#4a75f9")}
                 >
-                {country}
+                  {country}
                 </button>
-            ))}
+              ))}
             </div>
-        </div>
+          </div>
+        )}
 
         {/* Popup Modal */}
-        {showResult && (
+        {showResult && !gameOver && (
           <div
             style={{
               position: "fixed",
@@ -148,11 +165,7 @@ const LandmarkMatch = () => {
                 maxWidth: "400px",
               }}
             >
-              <h2
-                style={{
-                  color: isCorrect ? "#4caf50" : "#f44336"
-                }}
-              >
+              <h2 style={{ color: isCorrect ? "#4caf50" : "#f44336" }}>
                 {isCorrect ? "✅ Correct!" : "❌ Incorrect!"}
               </h2>
 

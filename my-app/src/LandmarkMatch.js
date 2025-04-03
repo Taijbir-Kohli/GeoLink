@@ -13,6 +13,7 @@ const LandmarkMatch = () => {
   const [selectedAnswer, setSelectedAnswer] = useState("");
   const [usedCountries, setUsedCountries] = useState([]);
   const [gameOver, setGameOver] = useState(false);
+  const [score, setScore] = useState(0); // ✅ NEW: Score tracker
 
   const getRandomCountries = (excludeCountry, allOptions) => {
     const filtered = allOptions.filter((c) => c !== excludeCountry);
@@ -48,7 +49,11 @@ const LandmarkMatch = () => {
 
   const handleAnswer = (selected) => {
     setSelectedAnswer(selected);
-    setIsCorrect(selected === correctCountry);
+    const correct = selected === correctCountry;
+    setIsCorrect(correct);
+    if (correct) {
+      setScore(prev => prev + 1); // ✅ Increase score only on correct
+    }
     setShowResult(true);
   };
 
@@ -68,10 +73,16 @@ const LandmarkMatch = () => {
         <h1>🗺️ Landmark Match</h1>
         <p>Can you guess the country of this landmark?</p>
 
+        {/* ✅ Score Display */}
+        <div style={{ fontWeight: "bold", fontSize: "1.1rem", marginBottom: "10px" }}>
+          Score: {score}
+        </div>
+
         {/* Game Over */}
         {gameOver ? (
           <div style={{ marginTop: "40px", textAlign: "center" }}>
             <h2>🎉 You've completed all landmarks!</h2>
+            <p>Final Score: <strong>{score}</strong></p>
             <p>Refresh the page to play again.</p>
           </div>
         ) : (

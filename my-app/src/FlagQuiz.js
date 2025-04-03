@@ -8,8 +8,9 @@ const FlagQuiz = () => {
   const navigate = useNavigate();
   const [selectedCountry, setSelectedCountry] = useState(null);
   const [targetCountry, setTargetCountry] = useState(null);
-  const [usedCountries, setUsedCountries] = useState([]); // ← track used countries
+  const [usedCountries, setUsedCountries] = useState([]);
   const [gameOver, setGameOver] = useState(false);
+  const [score, setScore] = useState(0); // ✅ NEW
 
   const getCountryCode = (name) => {
     const country = require("iso-3166-1-alpha-2").getCode(name);
@@ -35,7 +36,7 @@ const FlagQuiz = () => {
   };
 
   useEffect(() => {
-    pickRandomCountry();
+    pickRandomCountry(); // Load first flag
   }, []);
 
   const handleCountrySelect = (country) => {
@@ -44,6 +45,13 @@ const FlagQuiz = () => {
 
   const isCorrect = selectedCountry === targetCountry;
   const countryCode = getCountryCode(targetCountry);
+
+  const handleNext = () => {
+    if (isCorrect) {
+      setScore((prev) => prev + 1); // ✅ Only add to score if correct
+    }
+    pickRandomCountry(); // Move to next
+  };
 
   return (
     <div>
@@ -87,12 +95,18 @@ const FlagQuiz = () => {
             textAlign: "center",
           }}
         >
-          <h2 style={{ marginBottom: "20px" }}>🧠 Flag Quiz</h2>
+          <h2 style={{ marginBottom: "10px" }}>🧠 Flag Quiz</h2>
+
+          {/* ✅ Score display */}
+          <div style={{ fontWeight: "bold", fontSize: "1.1rem", marginBottom: "20px" }}>
+            Score: {score}
+          </div>
 
           {gameOver ? (
             <>
               <p>🎉 You've guessed all the flags for this session!</p>
-              <p>Refresh the page to start again.</p>
+              <p>Final Score: <strong>{score}</strong></p>
+              <p>Refresh the page to play again.</p>
             </>
           ) : (
             <>
@@ -131,7 +145,7 @@ const FlagQuiz = () => {
 
               {isCorrect && (
                 <button
-                  onClick={pickRandomCountry}
+                  onClick={handleNext}
                   style={{
                     marginTop: "20px",
                     padding: "10px 20px",

@@ -11,17 +11,19 @@ const PulloutDrawer = ({ onLoginClick, user }) => {
   useEffect(() => {
     const fetchQuizResults = async () => {
       if (!user) return;
-      
+
       const db = getFirestore();
-      const userQuizRef = doc(db, "quizResults", user.uid);
+      const userQuizRef = doc(db, "quizresults", user.uid);
       const userData = await getDoc(userQuizRef);
-      
+
       if (userData.exists()) {
-        setQuizResults(userData.data());
+        const data = userData.data();
+        // Assuming quizScores is the correct field for storing individual quiz results
+        setQuizResults(data.quizScores || {});
         fetchQuizResults();
       }
     };
-    
+
     fetchQuizResults();
   }, [user]); // Re-fetch when user changes
 
@@ -46,14 +48,16 @@ const PulloutDrawer = ({ onLoginClick, user }) => {
       <div className={`drawer ${isOpen ? "open" : ""}`}>
         <h2>Menu</h2>
 
-          {/* Display Quiz Results */}
-          {user && (
+        {/* Display Quiz Results */}
+        {user && (
           <>
             <h3>Quiz Results</h3>
             {Object.keys(quizResults).length > 0 ? (
               <ul>
                 {Object.entries(quizResults).map(([country, score]) => (
-                  <li key={country}>{country}: {score}</li>
+                  <li key={country}>
+                    {country}: {score}
+                  </li>
                 ))}
               </ul>
             ) : (
@@ -68,8 +72,6 @@ const PulloutDrawer = ({ onLoginClick, user }) => {
         ) : (
           <button className="login-btn" onClick={onLoginClick}>Login</button>
         )}
-
-      
       </div>
     </>
   );

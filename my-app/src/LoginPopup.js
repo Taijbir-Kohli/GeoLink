@@ -1,10 +1,12 @@
 import { useState } from "react";
-import { auth } from "./firebaseConfig"; // Import your Firebase auth configuration
+import { auth, dbFirestore } from "./firebaseConfig"; // Import Firestore methods
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword, sendEmailVerification } from "firebase/auth";
+import { doc, setDoc, getDoc } from "firebase/firestore"; // Import Firestore methods
 import "./LoginPopup.css";
 
 const LoginPopup = ({ onClose }) => {
   const [isSignUp, setIsSignUp] = useState(false); // Toggle between login and sign-up
+  const [username, setUsername] = useState(""); // New state for username
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
@@ -23,6 +25,17 @@ const LoginPopup = ({ onClose }) => {
 
         alert("Sign-up successful! Please check your email to verify your account.");
         setIsSignUp(false); // Switch to login mode after sign-up
+
+        // Store the user's username and initial quiz scores in Firestore
+        await setDoc(doc(dbFirestore, "quizresults", userCredential.user.uid), {
+          username: username,
+          quizScores: {}, // Initialize with empty quiz scores
+          totalScore: 0, // Initialize total score
+        });
+
+        // Optionally, store username in localStorage for leaderboard or later use
+        localStorage.setItem("username", username);
+        
       } else {
         // Handle Login
         const userCredential = await signInWithEmailAndPassword(auth, email, password);
@@ -36,6 +49,14 @@ const LoginPopup = ({ onClose }) => {
 
         localStorage.setItem("token", await user.getIdToken());
         console.log("User logged in:", user);
+
+        // Retrieve username from Firestore after login
+        const userDoc = await getDoc(doc(dbFirestore, "quizresults", user.uid));
+        if (userDoc.exists()) {
+          const userData = userDoc.data();
+          localStorage.setItem("username", userData.username); // Store username in localStorage
+        }
+
         onClose(); // Close login popup on success
       }
     } catch (error) {
@@ -55,6 +76,14 @@ const LoginPopup = ({ onClose }) => {
       <div className="popup-content" onClick={(e) => e.stopPropagation()}>
         <h2>{isSignUp ? "Sign Up" : "Login"}</h2>
         {error && <p style={{ color: "red" }}>{error}</p>}
+        {isSignUp && (
+          <input
+            type="text"
+            placeholder="Username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+        )}
         <input
           type="email"
           placeholder="Email"

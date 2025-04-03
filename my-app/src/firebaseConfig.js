@@ -1,6 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut } from "firebase/auth";
 import { getDatabase, ref, get, child } from "firebase/database"; // Import database modules
+import { getFirestore, doc, setDoc, getDoc, updateDoc, collection, getDocs } from "firebase/firestore"; // Firestore
 
 const firebaseConfig = {
   apiKey: "AIzaSyC3uft5571ohYCG0IEOhDj5SkttNYNMZ5Q",
@@ -15,6 +16,9 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getDatabase(app); // Initialize Firebase Realtime Database
+const dbFirestore = getFirestore(app); // Initialize Firestore
 
 // Export the Firebase Auth and Database functionality
-export { auth, db, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, get, ref, child };
+// export { auth, db, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, get, ref, child };
+export { auth, db, dbFirestore, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, doc, setDoc, getDoc, updateDoc, collection, getDocs, ref, get, child };
+

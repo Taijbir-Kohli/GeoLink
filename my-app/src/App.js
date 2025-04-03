@@ -14,6 +14,7 @@ import "./streetview.css";
 import GamesPage from "./GamesPage";
 import FlagQuiz from "./FlagQuiz";
 import LandmarkMatch from "./LandmarkMatch";
+import Leaderboard from "./Leaderboard";
 
 
 // Sidebar and Modal components
@@ -230,6 +231,9 @@ const App = () => {
             <div className="header-container">
               <img src="/favicon.ico" alt="GeoLink logo" className="logo" />
               <h1 className="title">GeoLink</h1>
+              <button className="leaderboard-button" onClick={() => navigate("/leaderboard")}>
+                Leaderboard
+              </button>
               <button className="games-button" onClick={() => navigate("/games")}>
                 Games
               </button>
@@ -304,7 +308,8 @@ const App = () => {
           </div>
         }
       />
-
+      
+      <Route path="/leaderboard" element={<Leaderboard />} />
       <Route path="/games" element={<GamesPage />} />
       <Route path="/FlagQuiz" element={<FlagQuiz />} />
       <Route path="/LandmarkMatch" element={<LandmarkMatch />} />

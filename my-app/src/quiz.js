@@ -20,7 +20,7 @@ const Quiz = ({ selectedCountry, quizQuestions, onClose }) => {
       return;
     }
 
-    // Calculate score
+    // Calculate the score for this quiz
     const correctAnswers = quizQuestions.filter(
       (q) => selectedAnswers[q.question] === q.answer
     ).length;
@@ -28,14 +28,26 @@ const Quiz = ({ selectedCountry, quizQuestions, onClose }) => {
     const score = `${correctAnswers} / ${totalQuestions}`;
 
     // Save result to Firestore
-    const userQuizRef = doc(db, "quizResults", user.uid);
+    const userQuizRef = doc(db, "quizresults", user.uid);
     const userData = await getDoc(userQuizRef);
 
-    let userResults = userData.exists() ? userData.data() : {};
+    let userResults = userData.exists() ? userData.data() : {
+      username: user.displayName || "Anonymous",
+      quizScores: {},
+      totalScore: 0,
+    };
 
-    userResults[selectedCountry] = score; // Store result for selected country
+    // Store individual result for selected country
+    userResults.quizScores[selectedCountry] = score;
 
+    // Update total score
+    const newTotalScore = Object.values(userResults.quizScores).reduce((sum, score) => sum + score, 0);
+    userResults.totalScore = newTotalScore;
+
+    // Save updated data to Firestore
     await setDoc(userQuizRef, userResults);
+
+    // alert(`Quiz submitted! Your score for ${selectedCountry}: ${correctAnswers} / ${totalQuestions}`);
   };
 
   return (

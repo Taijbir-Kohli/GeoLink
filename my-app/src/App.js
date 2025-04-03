@@ -66,6 +66,22 @@ const App = () => {
     }
   };
 
+
+  // FOR REAL TIME DEPLOYMENT ON WIKI ------- DO NOT DELETE
+  //   try {
+  //     const wikiResponse = await fetch(
+  //       `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(countryName)}`
+  //     );
+  //     if (wikiResponse.ok) {
+  //       const wikiData = await wikiResponse.json();
+  //       return wikiData.extract || "No history available.";
+  //     }
+  //   } catch (error) {
+  //     console.error("Wikipedia API failed, using local fallback.");
+  //   }
+  //   return historyData[countryName] || "No history available.";
+  // };
+
   const handleCountryClick = async (countryName) => {
     if (isSpeaking) {
       speechSynthesisInstance.cancel();
@@ -92,6 +108,22 @@ const App = () => {
     }
     return [];
   };
+
+
+  // FOR REAL TIME DEPLOYMENT ON RENDER --------------------------- DO NOT DELETE
+ 
+
+  // const fetchQuiz = async (country) => {
+  //   try {
+  //     const response = await fetch(`https://geolink-backend-latest.onrender.com/api/quizzes/${encodeURIComponent(country)}`);
+  //     const data = await response.json();
+  //     console.log(`Quiz data for ${country}:`, data); // Debugging line
+  //     return data;
+  //   } catch (error) {
+  //     console.error("Quiz API failed.", error);
+  //   }
+  //   return [];
+  // };
 
   const openQuiz = async (country) => {
     const quizQuestions = await fetchQuiz(country);

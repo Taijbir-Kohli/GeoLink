@@ -142,6 +142,13 @@ const App = () => {
     }
   };
 
+  const getCountryCode = (name) => {
+    const country = require("iso-3166-1-alpha-2").getCode(name);
+    return country;
+  };
+
+
+
   return (
     <Routes>
       <Route
@@ -182,7 +189,12 @@ const App = () => {
                   </div>
                 </div>
                 <div className="flag-box">
-                  <img src="/img/test.jpg" alt={`${selectedCountry} flag`} className="flag-image" />
+                <img src={getCountryCode(selectedCountry) ? `https://flagsapi.com/${getCountryCode(selectedCountry)}/flat/64.png` : "/img/default-flag.png"
+                  }
+                  alt={`${selectedCountry} flag`}
+                  className="flag-image"
+                />
+
                 </div>
               </div>
             )}

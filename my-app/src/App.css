@@ -171,3 +171,13 @@ body, html, button {
   font-size: 1rem;
   color: #333;
 }
+
+
+/* Hide mascot image when in Flag Quiz */
+.flag-quiz-mode .mascot-container {
+  display: none !important;
+}
+
+
+
+

@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { onAuthStateChanged, signOut } from "firebase/auth";
-import { auth } from "./firebaseConfig";
+import { db, ref, get, auth } from "./firebaseConfig";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import MapComponent from "./MapComponent";
 // import historyData from "./HistoryData";
@@ -98,16 +98,34 @@ const App = () => {
     }
   };
 
+
+  // NEW IMPLEMENTATION ON FIREBASE
   const fetchQuiz = async (country) => {
     try {
-      const response = await fetch(`http://localhost:8080/api/quizzes/${encodeURIComponent(country)}`);
-      const data = await response.json();
-      return data;
+      const quizRef = ref(db, 'quizzes/' + country.toLowerCase()); // Reference to the country quiz data
+      const snapshot = await get(quizRef);
+      if (snapshot.exists()) {
+        return snapshot.val(); // Return the quiz data
+      } else {
+        console.error("No quiz data found for", country);
+      }
     } catch (error) {
-      console.error("Quiz API failed.", error);
+      console.error("Error fetching quiz from Firebase:", error);
     }
     return [];
   };
+  
+  // OLD IMPLEMENTATION FROM SPRINGBOOT
+  // const fetchQuiz = async (country) => {
+  //   try {
+  //     const response = await fetch(`http://localhost:8080/api/quizzes/${encodeURIComponent(country)}`);
+  //     const data = await response.json();
+  //     return data;
+  //   } catch (error) {
+  //     console.error("Quiz API failed.", error);
+  //   }
+  //   return [];
+  // };
 
 
   // FOR REAL TIME DEPLOYMENT ON RENDER --------------------------- DO NOT DELETE

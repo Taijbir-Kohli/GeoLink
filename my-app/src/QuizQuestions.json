@@ -1,0 +1,821 @@
+{
+    "quizzes": {
+      "afghanistan": [
+        {
+          "question": "What was Afghanistan part of in ancient times?",
+          "options": ["Silk Road", "Roman Empire", "Great Wall", "Persian Gulf"],
+          "answer": "Silk Road"
+        },
+        {
+          "question": "What kind of geographical feature is prominent in Afghanistan?",
+          "options": ["Rainforests", "Tall mountains", "Deserts", "Islands"],
+          "answer": "Tall mountains"
+        },
+        {
+          "question": "Why was the Silk Road important?",
+          "options": ["It was a road made of silk", "It was a trade route", "It was a river", "It was a war zone"],
+          "answer": "It was a trade route"
+        }
+      ],
+      "armenia": [
+        {
+          "question": "What was Armenia the first country in the world to do?",
+          "options": ["Invent the wheel", "Have a female president", "Officially become Christian", "Discover America"],
+          "answer": "Officially become Christian"
+        },
+        {
+          "question": "Which religion is historically significant in Armenia?",
+          "options": ["Islam", "Buddhism", "Christianity", "Hinduism"],
+          "answer": "Christianity"
+        },
+        {
+          "question": "What is Armenia known for in terms of culture?",
+          "options": ["First space mission", "Oldest language", "Ancient churches", "Great pyramids"],
+          "answer": "Ancient churches"
+        }
+      ],
+      "azerbaijan": [
+        {
+          "question": "Why is Azerbaijan called the 'Land of Fire'?",
+          "options": ["Because of its hot climate", "Due to natural gas flames", "It has active volcanoes", "It produces fireworks"],
+          "answer": "Due to natural gas flames"
+        },
+        {
+          "question": "What natural phenomenon occurs in Azerbaijan?",
+          "options": ["Ice caves", "Natural gas flames", "Floating mountains", "Aurora borealis"],
+          "answer": "Natural gas flames"
+        },
+        {
+          "question": "What is a significant resource found in Azerbaijan?",
+          "options": ["Gold", "Natural gas", "Silk", "Diamonds"],
+          "answer": "Natural gas"
+        }
+      ],
+      "bahrain": [
+        {
+          "question": "What is Bahrain famous for historically?",
+          "options": ["Ancient castles", "Pearls", "Oil", "Gold mines"],
+          "answer": "Pearls"
+        },
+        {
+          "question": "What was more valuable than gold in Bahrain's past?",
+          "options": ["Dates", "Silk", "Pearls", "Spices"],
+          "answer": "Pearls"
+        },
+        {
+          "question": "What type of geographical feature is Bahrain?",
+          "options": ["A desert", "An island nation", "A rainforest", "A mountainous region"],
+          "answer": "An island nation"
+        }
+      ],
+      "bangladesh": [
+        {
+          "question": "Which animal is native to Bangladesh?",
+          "options": ["Komodo dragon", "Royal Bengal Tiger", "Panda", "Kangaroo"],
+          "answer": "Royal Bengal Tiger"
+        },
+        {
+          "question": "What is the largest river delta in the world?",
+          "options": ["Amazon Delta", "Ganges Delta", "Nile Delta", "Mississippi Delta"],
+          "answer": "Ganges Delta"
+        },
+        {
+          "question": "What makes the Royal Bengal Tiger special?",
+          "options": ["It can fly", "It is the smallest tiger species", "It is an endangered species", "It is blue in color"],
+          "answer": "It is an endangered species"
+        }
+      ],
+      "bhutan": [
+        {
+          "question": "What does Bhutan measure instead of money?",
+          "options": ["Gold", "Happiness", "Water", "Time"],
+          "answer": "Happiness"
+        },
+        {
+          "question": "What kind of geography does Bhutan have?",
+          "options": ["Rainforests", "Deserts", "Mountains", "Islands"],
+          "answer": "Mountains"
+        },
+        {
+          "question": "What kind of temples are common in Bhutan?",
+          "options": ["Hindu", "Christian", "Buddhist", "Islamic"],
+          "answer": "Buddhist"
+        }
+      ],
+      "brunei": [
+      {
+        "question": "What is special about Brunei's royal palace?",
+        "options": ["It has over 1,000 rooms", "It is made entirely of gold", "It has 1,788 rooms", "It is the largest palace in the world"],
+        "answer": "It has 1,788 rooms"
+      },
+      {
+        "question": "What is Brunei known for historically?",
+        "options": ["Oil wealth", "Ancient pyramids", "Riverside temples", "Tea plantations"],
+        "answer": "Oil wealth"
+      },
+      {
+        "question": "What is Brunei's primary source of wealth?",
+        "options": ["Tourism", "Oil", "Agriculture", "Fishing"],
+        "answer": "Oil"
+      }
+    ],
+    "cambodia": [
+      {
+        "question": "What is Angkor Wat known for?",
+        "options": ["A famous temple", "A royal palace", "A battlefield", "A river"],
+        "answer": "A famous temple"
+      },
+      {
+        "question": "Which empire built Angkor Wat?",
+        "options": ["Roman Empire", "Mayan Empire", "Khmer Empire", "Ottoman Empire"],
+        "answer": "Khmer Empire"
+      },
+      {
+        "question": "What is the significance of Angkor Wat?",
+        "options": ["Largest temple in the world", "Largest palace in the world", "Most ancient temple", "Biggest fortress in Asia"],
+        "answer": "Largest temple in the world"
+      }
+    ],
+    "china": [
+      {
+        "question": "What famous structure is in China?",
+        "options": ["Eiffel Tower", "Great Wall", "Pyramids of Giza", "Colosseum"],
+        "answer": "Great Wall"
+      },
+      {
+        "question": "Which animal is native to China?",
+        "options": ["Lion", "Panda", "Elephant", "Giraffe"],
+        "answer": "Panda"
+      },
+      {
+        "question": "What did China invent?",
+        "options": ["Paper", "Electricity", "Telephone", "Motorcar"],
+        "answer": "Paper"
+      }
+    ],
+    "cyprus": [
+      {
+        "question": "Which goddess is Cyprus known for being the birthplace of?",
+        "options": ["Aphrodite", "Hera", "Athena", "Artemis"],
+        "answer": "Aphrodite"
+      },
+      {
+        "question": "What is Cyprus famous for?",
+        "options": ["Ancient ruins", "Famous beaches", "Snow-capped mountains", "Rainforests"],
+        "answer": "Famous beaches"
+      },
+      {
+        "question": "Which mythological figure was born in Cyprus?",
+        "options": ["Zeus", "Hercules", "Aphrodite", "Hermes"],
+        "answer": "Aphrodite"
+      }
+    ],
+    "georgia": [
+      {
+        "question": "Which tradition is Georgia famous for?",
+        "options": ["Winemaking", "Martial arts", "Dance", "Carving"],
+        "answer": "Winemaking"
+      },
+      {
+        "question": "What is unique about the Georgian language?",
+        "options": ["It has its own alphabet", "It is the most ancient language", "It is similar to Russian", "It is spoken by few people"],
+        "answer": "It has its own alphabet"
+      },
+      {
+        "question": "What other country shares a border with Georgia?",
+        "options": ["Turkey", "Iran", "Russia", "China"],
+        "answer": "Russia"
+      }
+    ],
+    "india": [
+      {
+        "question": "What is India known for inventing?",
+        "options": ["Chess", "Car", "Printing press", "Electricity"],
+        "answer": "Chess"
+      },
+      {
+        "question": "What famous landmark is located in India?",
+        "options": ["Taj Mahal", "Great Wall", "Pyramids of Giza", "Stonehenge"],
+        "answer": "Taj Mahal"
+      },
+      {
+        "question": "What is the film industry in India called?",
+        "options": ["Bollywood", "Holllywood", "Tollywood", "Collywood"],
+        "answer": "Bollywood"
+      }
+    ],
+    "indonesia": [
+        {
+          "question": "How many islands does Indonesia have?",
+          "options": ["5,000", "10,000", "17,000", "25,000"],
+          "answer": "17,000"
+        },
+        {
+          "question": "What giant creature is native to Indonesia?",
+          "options": ["Komodo dragon", "Giant panda", "Kangaroo", "Polar bear"],
+          "answer": "Komodo dragon"
+        },
+        {
+          "question": "What is Indonesia known for?",
+          "options": ["Volcanoes", "Rivers", "Rainforests", "Islands"],
+          "answer": "Islands"
+        }
+      ],
+      "iran": [
+        {
+          "question": "What was Iran previously called?",
+          "options": ["Persia", "Babylonia", "Assyria", "Carthage"],
+          "answer": "Persia"
+        },
+        {
+          "question": "What type of crafts is Iran known for?",
+          "options": ["Carpets", "Pyramids", "Silk", "Jewelry"],
+          "answer": "Carpets"
+        },
+        {
+          "question": "Which type of animal is native to Iran?",
+          "options": ["Persian cats", "Komodo dragons", "Lions", "Bears"],
+          "answer": "Persian cats"
+        }
+      ],
+      "iraq": [
+        {
+          "question": "Where did the first writing system come from?",
+          "options": ["Greece", "Iraq", "Egypt", "China"],
+          "answer": "Iraq"
+        },
+        {
+          "question": "Which ancient civilization was in Iraq?",
+          "options": ["Mesopotamia", "Rome", "Mayan", "Egyptian"],
+          "answer": "Mesopotamia"
+        },
+        {
+          "question": "What ancient city is located in Iraq?",
+          "options": ["Babylon", "Rome", "Athens", "Cairo"],
+          "answer": "Babylon"
+        }
+      ],
+      "israel": [
+        {
+          "question": "Which ancient city is located in Israel?",
+          "options": ["Jerusalem", "Athens", "Cairo", "Rome"],
+          "answer": "Jerusalem"
+        },
+        {
+          "question": "What is Israel significant for?",
+          "options": ["Holy sites for multiple religions", "Largest deserts", "Giant pyramids", "Endless forests"],
+          "answer": "Holy sites for multiple religions"
+        },
+        {
+          "question": "Which religion is closely associated with Israel?",
+          "options": ["Christianity", "Islam", "Judaism", "Hinduism"],
+          "answer": "Judaism"
+        }
+      ],
+      "japan": [
+        {
+          "question": "Which famous landmark is located in Japan?",
+          "options": ["Mount Fuji", "Great Wall", "Eiffel Tower", "Pyramids of Giza"],
+          "answer": "Mount Fuji"
+        },
+        {
+          "question": "What is Japan known for inventing?",
+          "options": ["Video games", "Fireworks", "Automobiles", "Paper"],
+          "answer": "Video games"
+        },
+        {
+          "question": "What martial art is associated with Japan?",
+          "options": ["Kung Fu", "Karate", "Judo", "Taekwondo"],
+          "answer": "Karate"
+        }
+      ],
+      "jordan": [
+        {
+          "question": "What famous ancient city is found in Jordan?",
+          "options": ["Petra", "Babylon", "Athens", "Rome"],
+          "answer": "Petra"
+        },
+        {
+          "question": "What is Petra known for?",
+          "options": ["Its golden temples", "Carved buildings in rocks", "Pyramids", "Giant statues"],
+          "answer": "Carved buildings in rocks"
+        },
+        {
+          "question": "Which desert is located in Jordan?",
+          "options": ["Sahara", "Gobi", "Wadi Rum", "Atacama"],
+          "answer": "Wadi Rum"
+        }
+      ],
+      "kazakhstan": [
+        {
+          "question": "What space-related achievement is Kazakhstan known for?",
+          "options": ["First manned space mission", "Home to NASA", "First space telescope", "First moon landing"],
+          "answer": "First manned space mission"
+        },
+        {
+          "question": "What kind of landscape is common in Kazakhstan?",
+          "options": ["Deserts", "Endless steppes", "Rainforests", "Mountains"],
+          "answer": "Endless steppes"
+        },
+        {
+          "question": "Which country shares a border with Kazakhstan?",
+          "options": ["Russia", "China", "India", "Egypt"],
+          "answer": "Russia"
+        }
+      ],
+      "kuwait": [
+        {
+          "question": "What natural resource is Kuwait known for?",
+          "options": ["Oil", "Gold", "Diamonds", "Natural gas"],
+          "answer": "Oil"
+        },
+        {
+          "question": "What type of buildings are found in Kuwait?",
+          "options": ["Tall skyscrapers", "Ancient castles", "Mud huts", "Pyramids"],
+          "answer": "Tall skyscrapers"
+        },
+        {
+          "question": "What type of climate does Kuwait have?",
+          "options": ["Tropical", "Desert", "Rainforest", "Temperate"],
+          "answer": "Desert"
+        }
+      ],
+      "kyrgyzstan": [
+        {
+          "question": "What traditional structure is common in Kyrgyzstan?",
+          "options": ["Yurts", "Pyramids", "Castles", "Igloos"],
+          "answer": "Yurts"
+        },
+        {
+          "question": "What type of landscape is predominant in Kyrgyzstan?",
+          "options": ["Desert", "Mountains", "Rainforests", "Plains"],
+          "answer": "Mountains"
+        },
+        {
+          "question": "Which mountain range is found in Kyrgyzstan?",
+          "options": ["Himalayas", "Rockies", "Tian Shan", "Andes"],
+          "answer": "Tian Shan"
+        }
+      ],
+      "laos": [
+        {
+          "question": "What animal is Laos known for?",
+          "options": ["Elephants", "Pandas", "Lions", "Kangaroos"],
+          "answer": "Elephants"
+        },
+        {
+          "question": "What is Laos known as?",
+          "options": ["Land of a Million Elephants", "Land of Dragons", "Land of Eternal Summer", "Land of Giant Trees"],
+          "answer": "Land of a Million Elephants"
+        },
+        {
+          "question": "Which type of landscape is common in Laos?",
+          "options": ["Rainforests", "Deserts", "Tundra", "Barren fields"],
+          "answer": "Rainforests"
+        }
+      ],
+      "lebanon": [
+        {
+          "question": "Which ancient city is the oldest continuously inhabited city in the world?",
+          "options": ["Byblos", "Athens", "Cairo", "Jerusalem"],
+          "answer": "Byblos"
+        },
+        {
+          "question": "What tree is Lebanon famous for?",
+          "options": ["Cedar trees", "Pine trees", "Oak trees", "Maple trees"],
+          "answer": "Cedar trees"
+        },
+        {
+          "question": "Which body of water borders Lebanon?",
+          "options": ["Red Sea", "Mediterranean Sea", "Indian Ocean", "Black Sea"],
+          "answer": "Mediterranean Sea"
+        }
+      ],
+      "malaysia": [
+        {
+          "question": "Which large, famous structure is found in Malaysia?",
+          "options": ["Petronas Towers", "Eiffel Tower", "Great Wall", "Burj Khalifa"],
+          "answer": "Petronas Towers"
+        },
+        {
+          "question": "What type of forest is Malaysia known for?",
+          "options": ["Rainforest", "Tundra", "Deciduous forest", "Coniferous forest"],
+          "answer": "Rainforest"
+        },
+        {
+          "question": "What animal is native to Malaysia?",
+          "options": ["Orangutans", "Giraffes", "Penguins", "Koalas"],
+          "answer": "Orangutans"
+        }
+      ],
+      "mongolia": [
+      {
+        "question": "Who was the famous ruler from Mongolia?",
+        "options": ["Genghis Khan", "Alexander the Great", "Napoleon Bonaparte", "Julius Caesar"],
+        "answer": "Genghis Khan"
+      },
+      {
+        "question": "What type of animal is closely associated with Mongolia?",
+        "options": ["Horses", "Lions", "Elephants", "Kangaroos"],
+        "answer": "Horses"
+      },
+      {
+        "question": "Which vast grassland is found in Mongolia?",
+        "options": ["Gobi Desert", "Sahara Desert", "Mongolian Steppes", "Atacama Desert"],
+        "answer": "Mongolian Steppes"
+      }
+    ],
+    "myanmar": [
+      {
+        "question": "What is Myanmar's famous Golden Rock?",
+        "options": ["A floating boulder", "A giant golden statue", "A royal palace", "A historic fort"],
+        "answer": "A floating boulder"
+      },
+      {
+        "question": "What type of structure is common in Myanmar?",
+        "options": ["Temples", "Castles", "Pyramids", "Skyscrapers"],
+        "answer": "Temples"
+      },
+      {
+        "question": "What river flows through Myanmar?",
+        "options": ["Mekong", "Yangtze", "Irrawaddy", "Amazon"],
+        "answer": "Irrawaddy"
+      }
+    ],
+    "nepal": [
+      {
+        "question": "What is the tallest mountain in the world, located in Nepal?",
+        "options": ["Mount Everest", "K2", "Kangchenjunga", "Makalu"],
+        "answer": "Mount Everest"
+      },
+      {
+        "question": "What is Nepal known for?",
+        "options": ["Mountains", "Beaches", "Deserts", "Rainforests"],
+        "answer": "Mountains"
+      },
+      {
+        "question": "Which famous figure was born in Nepal?",
+        "options": ["Buddha", "Alexander the Great", "Confucius", "Aristotle"],
+        "answer": "Buddha"
+      }
+    ],
+    "north korea": [
+      {
+        "question": "What type of government does North Korea have?",
+        "options": ["Communist", "Democratic", "Monarchy", "Republic"],
+        "answer": "Communist"
+      },
+      {
+        "question": "What is a major characteristic of life in North Korea?",
+        "options": ["Strict government control", "Free internet access", "High levels of tourism", "Democratic elections"],
+        "answer": "Strict government control"
+      },
+      {
+        "question": "Which country is located to the south of North Korea?",
+        "options": ["South Korea", "Japan", "China", "Russia"],
+        "answer": "South Korea"
+      }
+    ],
+    "oman": [
+        {
+          "question": "What is the landscape like in Oman?",
+          "options": ["Deserts and mountains", "Rainforests", "Plains", "Tundra"],
+          "answer": "Deserts and mountains"
+        },
+        {
+          "question": "What is a popular tourist attraction in Oman?",
+          "options": ["The Empty Quarter", "The Pyramids", "Petra", "Mount Fuji"],
+          "answer": "The Empty Quarter"
+        },
+        {
+          "question": "What is one of the oldest buildings found in Oman?",
+          "options": ["Castles", "Mosques", "Skyscrapers", "Towers"],
+          "answer": "Castles"
+        }
+      ],
+      "pakistan": [
+        {
+          "question": "What is the second tallest mountain in the world, located in Pakistan?",
+          "options": ["K2", "Everest", "Mount Kilimanjaro", "Mount Fuji"],
+          "answer": "K2"
+        },
+        {
+          "question": "Which ancient civilization existed in what is now Pakistan?",
+          "options": ["Indus Valley Civilization", "Roman Empire", "Mayan Civilization", "Mesopotamian Civilization"],
+          "answer": "Indus Valley Civilization"
+        },
+        {
+          "question": "What is Pakistan known for producing?",
+          "options": ["Cotton", "Gold", "Diamonds", "Oil"],
+          "answer": "Cotton"
+        }
+      ],
+      "palestine": [
+        {
+          "question": "What is one of the holy cities in Palestine?",
+          "options": ["Bethlehem", "Mecca", "Cairo", "Rome"],
+          "answer": "Bethlehem"
+        },
+        {
+          "question": "What important historical event took place in Jerusalem?",
+          "options": ["The crucifixion of Jesus", "The signing of the Magna Carta", "The birth of Genghis Khan", "The first flight of the Wright brothers"],
+          "answer": "The crucifixion of Jesus"
+        },
+        {
+          "question": "What is a famous landmark in Palestine?",
+          "options": ["The Dome of the Rock", "Eiffel Tower", "Colosseum", "Great Wall of China"],
+          "answer": "The Dome of the Rock"
+        }
+      ],
+      "philippines": [
+        {
+          "question": "How many islands make up the Philippines?",
+          "options": ["3,000", "7,000", "10,000", "15,000"],
+          "answer": "7,000"
+        },
+        {
+          "question": "What is the capital of the Philippines?",
+          "options": ["Manila", "Jakarta", "Bangkok", "Hanoi"],
+          "answer": "Manila"
+        },
+        {
+          "question": "What is a popular food from the Philippines?",
+          "options": ["Adobo", "Sushi", "Pasta", "Tacos"],
+          "answer": "Adobo"
+        }
+      ],
+      "qatar": [
+        {
+          "question": "What is Qatar known for in terms of architecture?",
+          "options": ["Futuristic buildings", "Ancient pyramids", "Castles", "Stone temples"],
+          "answer": "Futuristic buildings"
+        },
+        {
+          "question": "Which major global event did Qatar host in 2022?",
+          "options": ["FIFA World Cup", "Olympic Games", "World Expo", "Cultural Olympics"],
+          "answer": "FIFA World Cup"
+        },
+        {
+          "question": "What is a traditional aspect of Qatari culture?",
+          "options": ["Pearl diving", "Tea ceremonies", "Opera performances", "Snowboarding"],
+          "answer": "Pearl diving"
+        }
+      ],
+      "saudi arabia": [
+        {
+          "question": "What city in Saudi Arabia is considered the holiest in Islam?",
+          "options": ["Mecca", "Medina", "Riyadh", "Jeddah"],
+          "answer": "Mecca"
+        },
+        {
+          "question": "What is a common feature of Saudi Arabian landscapes?",
+          "options": ["Deserts", "Rainforests", "Tundra", "Lakes"],
+          "answer": "Deserts"
+        },
+        {
+          "question": "Which famous landmark is found in Saudi Arabia?",
+          "options": ["Kaaba", "Eiffel Tower", "Great Wall", "Colosseum"],
+          "answer": "Kaaba"
+        }
+      ],
+      "singapore": [
+        {
+          "question": "What is Singapore known for having in its gardens?",
+          "options": ["Giant glowing trees", "Roses", "Fountains", "Tropical fish"],
+          "answer": "Giant glowing trees"
+        },
+        {
+          "question": "What type of city is Singapore?",
+          "options": ["Modern", "Historical", "Rural", "Traditional"],
+          "answer": "Modern"
+        },
+        {
+          "question": "What is the famous tourist attraction in Singapore?",
+          "options": ["Marina Bay Sands", "Eiffel Tower", "Statue of Liberty", "Great Wall of China"],
+          "answer": "Marina Bay Sands"
+        }
+      ],
+      "south korea": [
+        {
+          "question": "Which global music trend is South Korea known for?",
+          "options": ["K-Pop", "Jazz", "Rock", "Classical"],
+          "answer": "K-Pop"
+        },
+        {
+          "question": "What is a popular dish in South Korea?",
+          "options": ["Kimchi", "Pizza", "Tacos", "Pasta"],
+          "answer": "Kimchi"
+        },
+        {
+          "question": "What type of technology is South Korea famous for?",
+          "options": ["Electronics", "Space exploration", "Farming equipment", "Textiles"],
+          "answer": "Electronics"
+        }
+      ],
+      "sri lanka": [
+        {
+          "question": "What is Sri Lanka known as?",
+          "options": ["The Pearl of the Indian Ocean", "The Island of Dragons", "The Jewel of the Pacific", "The Garden of Asia"],
+          "answer": "The Pearl of the Indian Ocean"
+        },
+        {
+          "question": "What is a famous animal found in Sri Lanka?",
+          "options": ["Elephants", "Kangaroos", "Pandas", "Lions"],
+          "answer": "Elephants"
+        },
+        {
+          "question": "Which type of landscape is common in Sri Lanka?",
+          "options": ["Rainforests and beaches", "Mountains and deserts", "Swamps and tundra", "Plains and plateaus"],
+          "answer": "Rainforests and beaches"
+        }
+      ],
+      "syria": [
+        {
+          "question": "What is Syria known for historically?",
+          "options": ["Ancient ruins", "Futuristic cities", "Space exploration", "Ice age settlements"],
+          "answer": "Ancient ruins"
+        },
+        {
+          "question": "What trade route was Syria a part of?",
+          "options": ["Silk Road", "Spice Route", "Salt Route", "Ivory Road"],
+          "answer": "Silk Road"
+        },
+        {
+          "question": "What ancient city in Syria was famous for its ruins?",
+          "options": ["Palmyra", "Athens", "Rome", "Carthage"],
+          "answer": "Palmyra"
+        }
+      ],
+      "taiwan": [
+        {
+          "question": "What is Taiwan known for in terms of food?",
+          "options": ["Night markets", "Burgers", "Sushi", "Tacos"],
+          "answer": "Night markets"
+        },
+        {
+          "question": "What mountain range is found in Taiwan?",
+          "options": ["Central Mountain Range", "Rocky Mountains", "Andes", "Alps"],
+          "answer": "Central Mountain Range"
+        },
+        {
+          "question": "What is a famous product Taiwan is known for?",
+          "options": ["Technology", "Agricultural products", "Fashion", "Luxury cars"],
+          "answer": "Technology"
+        }
+      ],
+      "tajikistan": [
+        {
+          "question": "What geographical feature is Tajikistan known for?",
+          "options": ["Massive mountains", "Flat plains", "Deserts", "Volcanic islands"],
+          "answer": "Massive mountains"
+        },
+        {
+          "question": "What ancient trade route passed through Tajikistan?",
+          "options": ["Silk Road", "Spice Route", "Tea Route", "Salt Route"],
+          "answer": "Silk Road"
+        },
+        {
+          "question": "What is a famous activity in Tajikistan?",
+          "options": ["Mountain climbing", "Skiing", "Desert safaris", "Deep sea diving"],
+          "answer": "Mountain climbing"
+        }
+      ],
+      "thailand": [
+        {
+          "question": "What is Thailand known for in terms of cultural heritage?",
+          "options": ["Golden temples", "Cathedrals", "Pyramids", "Castles"],
+          "answer": "Golden temples"
+        },
+        {
+          "question": "What is a traditional Thai food?",
+          "options": ["Pad Thai", "Sushi", "Pizza", "Spaghetti"],
+          "answer": "Pad Thai"
+        },
+        {
+          "question": "What makes Thailand unique in its colonial history?",
+          "options": ["It was never colonized", "It was part of the British Empire", "It was part of the Roman Empire", "It was a French colony"],
+          "answer": "It was never colonized"
+        }
+      ],
+      "timor-leste": [
+        {
+          "question": "When did Timor-Leste become an independent country?",
+          "options": ["2002", "1999", "1985", "2010"],
+          "answer": "2002"
+        },
+        {
+          "question": "What is a notable feature of Timor-Leste?",
+          "options": ["Beaches and mountains", "Forests and volcanoes", "Deserts and plains", "Rivers and lakes"],
+          "answer": "Beaches and mountains"
+        },
+        {
+          "question": "What is another name for Timor-Leste?",
+          "options": ["East Timor", "New East Indies", "West Papua", "Central Islands"],
+          "answer": "East Timor"
+        }
+      ],
+      "turkey": [
+        {
+          "question": "What famous ancient city is located in Turkey?",
+          "options": ["Troy", "Athens", "Rome", "Carthage"],
+          "answer": "Troy"
+        },
+        {
+          "question": "What significant cultural feature is found in Turkey?",
+          "options": ["Where East meets West", "Mountains and rainforests", "Deep deserts", "Isolated islands"],
+          "answer": "Where East meets West"
+        },
+        {
+          "question": "What is a famous landmark in Turkey?",
+          "options": ["Hagia Sophia", "Great Wall of China", "Eiffel Tower", "Colosseum"],
+          "answer": "Hagia Sophia"
+        }
+      ],
+      "turkmenistan": [
+      {
+        "question": "What is Turkmenistan known for?",
+        "options": ["Huge deserts", "Tropical rainforests", "High mountains", "Dense forests"],
+        "answer": "Huge deserts"
+      },
+      {
+        "question": "Which ancient trade route passed through Turkmenistan?",
+        "options": ["Silk Road", "Tea Route", "Spice Route", "Salt Route"],
+        "answer": "Silk Road"
+      },
+      {
+        "question": "What kind of cities are found in Turkmenistan?",
+        "options": ["Ancient cities", "Modern metropolises", "Floating cities", "Farming villages"],
+        "answer": "Ancient cities"
+      }
+     ],
+      "united arab emirates": [
+        {
+          "question": "What is the tallest building in the world, located in the UAE?",
+          "options": ["Burj Khalifa", "Eiffel Tower", "Empire State Building", "Petronas Towers"],
+          "answer": "Burj Khalifa"
+        },
+        {
+          "question": "What is a famous activity in the UAE?",
+          "options": ["Desert safaris", "Hiking in the Alps", "Snowboarding", "Fishing in rivers"],
+          "answer": "Desert safaris"
+        },
+        {
+          "question": "Which major event took place in the UAE in 2020?",
+          "options": ["Expo 2020 Dubai", "Summer Olympics", "World Cup 2022", "Eurovision 2020"],
+          "answer": "Expo 2020 Dubai"
+        }
+      ],
+      "uzbekistan": [
+        {
+          "question": "What is a famous feature of Uzbekistan's cities?",
+          "options": ["Blue-tiled buildings", "Wooden huts", "Skyscrapers", "Mountain villages"],
+          "answer": "Blue-tiled buildings"
+        },
+        {
+          "question": "Which trade route passed through Uzbekistan?",
+          "options": ["Silk Road", "Tea Route", "Spice Route", "Ivory Road"],
+          "answer": "Silk Road"
+        },
+        {
+          "question": "What type of historical architecture is common in Uzbekistan?",
+          "options": ["Beautiful tiled mosques and cities", "Wooden huts", "Modern skyscrapers", "Ancient pyramids"],
+          "answer": "Beautiful tiled mosques and cities"
+        }
+      ],
+      "vietnam": [
+        {
+          "question": "What famous Vietnamese food is known for its broth and noodles?",
+          "options": ["Pho", "Sushi", "Tacos", "Pasta"],
+          "answer": "Pho"
+        },
+        {
+          "question": "What type of villages are found in Vietnam's rivers?",
+          "options": ["Floating villages", "Mountain villages", "Desert villages", "Cave villages"],
+          "answer": "Floating villages"
+        },
+        {
+          "question": "Which famous landmark is in Vietnam?",
+          "options": ["Ha Long Bay", "Eiffel Tower", "Mount Fuji", "Grand Canyon"],
+          "answer": "Ha Long Bay"
+        }
+      ],
+      "yemen": [
+        {
+          "question": "What unique structures are found in Yemen?",
+          "options": ["Ancient skyscrapers made of mud", "Futuristic glass buildings", "Wooden huts", "Stone castles"],
+          "answer": "Ancient skyscrapers made of mud"
+        },
+        {
+          "question": "How old are Yemen's ancient skyscrapers?",
+          "options": ["Over 500 years old", "Over 1,000 years old", "Over 200 years old", "Over 2,000 years old"],
+          "answer": "Over 500 years old"
+        },
+        {
+          "question": "What type of climate does Yemen have?",
+          "options": ["Desert and mountainous", "Tropical rainforest", "Cold and snowy", "Wet and rainy"],
+          "answer": "Desert and mountainous"
+        }
+      ]
+    }
+  }
+  

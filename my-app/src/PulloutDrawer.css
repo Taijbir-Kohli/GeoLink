@@ -7,11 +7,11 @@
   background: #fef3a5; /* Background to match the header color */
   color: #4a75f9; /* Text color to match title color */
   transition: 0.3s;
-  padding: 20px;
   box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
   z-index: 998;
-  text-align: center;
   font-family: 'Fredoka', sans-serif;
+  display: flex;
+  flex-direction: column;
 }
 
 .drawer.open {
@@ -21,6 +21,7 @@
 .drawer h2 {
   margin-top: 30px;
   color: #4a75f9; /* Heading text color to match title color */
+  text-align: center;
 }
 
 .drawer-toggle {
@@ -50,13 +51,20 @@
   float: right;
 }
 
+.drawer-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0 20px 20px;
+  text-align: left;
+}
+
 .login-btn {
   background: #f0f0f0; /* Light button background */
   color: #4a75f9; /* Text color to match title color */
   padding: 10px;
   border: none;
-  width: 100%;
-  margin-top: 20px;
+  width: 90%;
+  margin: 10px auto 20px;
   cursor: pointer;
   font-weight: 600; /* Bold font for the login button */
   border-radius: 8px; /* Rounded corners for the button */

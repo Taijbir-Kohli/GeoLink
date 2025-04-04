@@ -53,7 +53,7 @@ const PulloutDrawer = ({ onLoginClick, user }) => {
       {/* Pullout Drawer */}
       <div className={`drawer ${isOpen ? "open" : ""}`}>
         <h2>Menu</h2>
-
+        <div className="drawer-content">
         {/* Display Quiz Results */}
         {user && (
   <>
@@ -96,10 +96,13 @@ const PulloutDrawer = ({ onLoginClick, user }) => {
     ) : (
       <p>No landmark quiz data yet.</p>
     )}
+    
 
 
   </>
   )}
+          </div>
+
 
 
         {/* If the user is logged in, show the Logout button, otherwise show the Login button */}

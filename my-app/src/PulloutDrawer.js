@@ -22,6 +22,9 @@ const PulloutDrawer = ({ onLoginClick, user }) => {
         setQuizResults({
           quizScores: data.quizScores || {},
           flagQuizScores: data.flagQuizScores?.perCountry || {},
+          landmarkQuizScores: data.landmarkQuizScores?.perCountry || {},
+
+
         });
         fetchQuizResults();
       }
@@ -79,6 +82,22 @@ const PulloutDrawer = ({ onLoginClick, user }) => {
     ) : (
       <p>No flag quiz data yet.</p>
     )}
+
+
+    <h3>Landmark Quiz Accuracy</h3>
+    {quizResults.landmarkQuizScores && Object.keys(quizResults.landmarkQuizScores).length > 0 ? (
+      <ul>
+        {Object.entries(quizResults.landmarkQuizScores).map(([country, value]) => (
+          <li key={country}>
+            {country}: {value}
+          </li>
+        ))}
+      </ul>
+    ) : (
+      <p>No landmark quiz data yet.</p>
+    )}
+
+
   </>
   )}
 

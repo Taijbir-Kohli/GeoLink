@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./App.css";
 import landmarkLinks from "./LandmarkLinks";
+import { getFirestore, doc, setDoc, getDoc } from "firebase/firestore";
+import { auth } from "./firebaseConfig";
+
 
 const LandmarkMatch = () => {
   const navigate = useNavigate();
@@ -47,15 +50,73 @@ const LandmarkMatch = () => {
     generateQuestion();
   }, []);
 
-  const handleAnswer = (selected) => {
+  const handleAnswer = async (selected) => {
     setSelectedAnswer(selected);
     const correct = selected === correctCountry;
     setIsCorrect(correct);
     if (correct) {
       setScore(prev => prev + 1); // ✅ Increase score only on correct
     }
+
+    await updateLandmarkScore(selected, correctCountry, correct);
     setShowResult(true);
   };
+
+  const updateLandmarkScore = async (selectedCountry, correctCountry, wasCorrect) => {
+    const user = auth.currentUser;
+    if (!user) return;
+  
+    const db = getFirestore();
+    const userRef = doc(db, "quizresults", user.uid);
+    const userSnap = await getDoc(userRef);
+  
+    let userData = userSnap.exists() ? userSnap.data() : {
+      username: user.displayName || "Anonymous",
+      quizScores: {},
+      totalScore: 0,
+      totalCorrectAnswers: 0,
+      totalQuestions: 0,
+      flagQuizScores: {
+        totalCorrect: 0,
+        totalAttempts: 0,
+        perCountry: {},
+      },
+      landmarkQuizScores: {
+        totalCorrect: 0,
+        totalAttempts: 0,
+        perCountry: {},
+      },
+    };
+  
+    const landmarkData = userData.landmarkQuizScores || {
+      totalCorrect: 0,
+      totalAttempts: 0,
+      perCountry: {},
+    };
+  
+    const { totalCorrect, totalAttempts, perCountry } = landmarkData;
+  
+    const [prevCorrect, prevAttempts] = (perCountry[correctCountry] || "0/0")
+      .split("/")
+      .map(Number);
+  
+    const updatedCorrect = wasCorrect ? prevCorrect + 1 : prevCorrect;
+    const updatedAttempts = prevAttempts + 1;
+  
+    const updatedPerCountry = {
+      ...perCountry,
+      [correctCountry]: `${updatedCorrect}/${updatedAttempts}`,
+    };
+  
+    userData.landmarkQuizScores = {
+      totalCorrect: wasCorrect ? totalCorrect + 1 : totalCorrect,
+      totalAttempts: totalAttempts + 1,
+      perCountry: updatedPerCountry,
+    };
+  
+    await setDoc(userRef, userData);
+  };
+  
 
   return (
     <div>

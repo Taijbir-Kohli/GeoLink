@@ -27,6 +27,11 @@ const Leaderboard = () => {
           const flagAttempts = user.flagQuizScores?.totalAttempts || 0;
           const flagAccuracy = flagAttempts > 0 ? ((flagCorrect / flagAttempts) * 100).toFixed(2) : 0;
 
+
+          const landmarkCorrect = user.landmarkQuizScores?.totalCorrect || 0;
+          const landmarkAttempts = user.landmarkQuizScores?.totalAttempts || 0;
+          const landmarkAccuracy = flagAttempts > 0 ? ((landmarkCorrect / landmarkAttempts) * 100).toFixed(2) : 0;
+
           return {
             username: user.username,
             totalCorrectAnswers,
@@ -35,6 +40,9 @@ const Leaderboard = () => {
             flagCorrect,
             flagAttempts,
             flagAccuracy,
+            landmarkCorrect,
+            landmarkAttempts,
+            landmarkAccuracy
           };
         })
         .sort((a, b) => b.percentage - a.percentage); // Sort by percentage, descending
@@ -105,6 +113,34 @@ const Leaderboard = () => {
                   <td>{user.flagCorrect}</td>
                   <td>{user.flagAttempts}</td>
                   <td>{user.flagAccuracy}%</td>
+                </tr>
+              ))}
+          </tbody>
+        </table>
+      </div>
+      <div className="leaderboard-container">
+        <h2>Landmark Quiz Accuracy Leaderboard</h2>
+        <table className="leaderboard-table">
+          <thead>
+            <tr>
+              <th>Rank</th>
+              <th>Username</th>
+              <th>Correct Flags</th>
+              <th>Total Attempts</th>
+              <th>Accuracy %</th>
+            </tr>
+          </thead>
+          <tbody>
+            {leaderboard
+              .filter((user) => user.landmarkAttempts > 0) // Only show users with at least one attempt
+              .sort((a, b) => b.landmarkAccuracy - a.landmarkAccuracy)
+              .map((user, index) => (
+                <tr key={index}>
+                  <td>{index + 1}</td>
+                  <td>{user.username}</td>
+                  <td>{user.landmarkCorrect}</td>
+                  <td>{user.landmarkAttempts}</td>
+                  <td>{user.landmarkAccuracy}%</td>
                 </tr>
               ))}
           </tbody>

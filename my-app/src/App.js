@@ -38,11 +38,13 @@ const App = () => {
   let speechSynthesisInstance = window.speechSynthesis;
   const [isMuted, setIsMuted] = useState(false);
   const audioRef = useRef(null);
+  const [volume, setVolume] = useState(0.5); // Default volume at 70%
+
 
   useEffect(() => {
     const playAudio = () => {
       if (audioRef.current && !isMuted) {
-        audioRef.current.volume = 0.01; 
+        audioRef.current.volume = 0.5; 
         audioRef.current.play().catch((e) => {
           console.log("Autoplay blocked:", e);
         });
@@ -242,7 +244,11 @@ const App = () => {
     return country;
   };
 
-
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.volume = volume;
+    }
+  }, [volume]);
 
   return (
     <>
@@ -271,6 +277,23 @@ const App = () => {
       >
         {isMuted ? "🔇 Music Off" : "🎵 Music On"}
       </button>
+      {/* Volume Slider */}
+      <input
+        type="range"
+        min="0"
+        max="1"
+        step="0.01"
+        value={volume}
+        onChange={(e) => setVolume(parseFloat(e.target.value))}
+        style={{
+          position: "fixed",
+          bottom: "10px",
+          right: "130px",
+          width: "100px",
+          zIndex: 1000,
+        }}
+        disabled={isMuted} // Disable slider when muted
+      />
     
     <Routes>
       <Route

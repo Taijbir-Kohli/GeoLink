@@ -1,18 +1,23 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./App.css";
+import Mascot from "./Mascot";
 
 const GamesPage = () => {
   const navigate = useNavigate();
 
   return (
     <div>
+      <title>GeoLink</title>
       {/* Header reused from front page */}
       <div className="header-container">
         <img src="/favicon.ico" alt="GeoLink logo" className="logo" />
         <h1 className="title">GeoLink</h1>
         <button className="games-button" onClick={() => navigate("/")}>
           Home
+        </button>
+        <button className="leaderboard-button" onClick={() => navigate("/leaderboard")}>
+          Leaderboard
         </button>
       </div>
 
@@ -42,6 +47,7 @@ const GamesPage = () => {
           </div>
         </div>
       </div>
+      <Mascot message={`<strong>Let's Play a Game, Click one to get started!`} />
     </div>
   );
 };

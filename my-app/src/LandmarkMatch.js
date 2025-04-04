@@ -4,6 +4,7 @@ import "./App.css";
 import landmarkLinks from "./LandmarkLinks";
 import { getFirestore, doc, setDoc, getDoc } from "firebase/firestore";
 import { auth } from "./firebaseConfig";
+import Mascot from "./Mascot";
 
 
 const LandmarkMatch = () => {
@@ -120,6 +121,7 @@ const LandmarkMatch = () => {
 
   return (
     <div>
+      <title>GeoLink</title>
       {/* Header */}
       <div className="header-container">
         <img src="/favicon.ico" alt="GeoLink logo" className="logo" />
@@ -269,6 +271,10 @@ const LandmarkMatch = () => {
           </div>
         )}
       </div>
+      <Mascot
+        message={`<strong>Here's a Famous Landmark!</strong><br />Guess the Correct Country!`}
+        position="bottom-right"
+      />
     </div>
   );
 };

@@ -5,6 +5,7 @@ import FlagQuizMap from "./FlagQuizMap";
 import countriesData from "./countries.json";
 import { getFirestore, doc, setDoc, getDoc } from "firebase/firestore";
 import { auth } from "./firebaseConfig"; // Import Firebase auth
+import Mascot from "./Mascot";
 
 const FlagQuiz = () => {
   const navigate = useNavigate();
@@ -12,7 +13,7 @@ const FlagQuiz = () => {
   const [targetCountry, setTargetCountry] = useState(null);
   const [usedCountries, setUsedCountries] = useState([]);
   const [gameOver, setGameOver] = useState(false);
-  const [score, setScore] = useState(0); // ✅ NEW
+  const [score, setScore] = useState(0); 
 
   const getCountryCode = (name) => {
     const country = require("iso-3166-1-alpha-2").getCode(name);
@@ -143,6 +144,7 @@ const FlagQuiz = () => {
 
   return (
     <div>
+      <title>GeoLink</title>
       {/* Header */}
       <div className="header-container">
         <img src="/favicon.ico" alt="GeoLink logo" className="logo" />
@@ -254,6 +256,10 @@ const FlagQuiz = () => {
           )}
         </div>
       </div>
+      <Mascot
+        message={`<strong>Here's a Flag!</strong><br />Click the matching country.`}
+        position="bottom-left"
+      />
     </div>
   );
 };

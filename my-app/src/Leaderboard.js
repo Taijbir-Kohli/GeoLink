@@ -55,6 +55,7 @@ const Leaderboard = () => {
 
   return (
     <div>
+      <title>GeoLink</title>
       {/* Header reused from front page */}
       <div className="header-container">
         <img src="/favicon.ico" alt="GeoLink logo" className="logo" />
@@ -62,7 +63,11 @@ const Leaderboard = () => {
         <button className="leaderboard-button" onClick={() => navigate("/")}>
           Home
         </button>
+        <button className="games-button" onClick={() => navigate("/games")}>
+          Games
+        </button>
       </div>
+
 
    
       <div className="leaderboard-container">

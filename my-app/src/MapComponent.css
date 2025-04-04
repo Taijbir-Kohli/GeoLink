@@ -9,7 +9,7 @@
   
   /* Custom position for zoom control */
   .leaflet-control-zoom {
-    bottom: 20px !important;
+    bottom: 40px !important;
     right: 20px !important;
     top: unset !important;
     left: unset !important;
@@ -19,8 +19,8 @@
   /* Recenter button style (positioned with z-index above map) */
   .recenter-button {
     position: absolute;
-    top: 10px;
-    right: 10px;
+    bottom: 20px;
+    right: 20px;
     padding: 10px 20px;
     background-color: #4a75f9;
     color: white;

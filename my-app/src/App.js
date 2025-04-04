@@ -36,6 +36,25 @@ const App = () => {
   const navigate = useNavigate();
   const [mascotVisible, setMascotVisible] = useState(true);
   let speechSynthesisInstance = window.speechSynthesis;
+  const [isMuted, setIsMuted] = useState(false);
+  const audioRef = useRef(null);
+
+  useEffect(() => {
+    const playAudio = () => {
+      if (audioRef.current && !isMuted) {
+        audioRef.current.volume = 0.01; 
+        audioRef.current.play().catch((e) => {
+          console.log("Autoplay blocked:", e);
+        });
+      }
+      window.removeEventListener("click", playAudio);
+    };
+  
+    window.addEventListener("click", playAudio); // listen for first click
+    return () => window.removeEventListener("click", playAudio);
+  }, [isMuted]);
+  
+
 
   useEffect(() => {
     onAuthStateChanged(auth, (currentUser) => {
@@ -226,6 +245,33 @@ const App = () => {
 
 
   return (
+    <>
+      <audio
+        ref={audioRef}
+        src="/music/background.mp3"
+        loop
+        autoPlay
+        muted={isMuted}
+      />
+    
+      <button
+        style={{
+          position: "fixed",
+          bottom: "7px",
+          right: "20px",
+          padding: "10px 15px",
+          borderRadius: "10px",
+          backgroundColor: "#4a75f9",
+          color: "white",
+          border: "none",
+          zIndex: 1000,
+          cursor: "pointer",
+        }}
+        onClick={() => setIsMuted((prev) => !prev)}
+      >
+        {isMuted ? "🔇 Music Off" : "🎵 Music On"}
+      </button>
+    
     <Routes>
       <Route
         path="/"
@@ -324,6 +370,7 @@ const App = () => {
       <Route path="/FlagQuiz" element={<FlagQuiz />} />
       <Route path="/LandmarkMatch" element={<LandmarkMatch />} />
     </Routes>
+    </>
   );
 };
 

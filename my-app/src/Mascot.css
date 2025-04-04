@@ -1,12 +1,26 @@
 /* Mascot.css */
 .globey-container {
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-    display: flex;
-    align-items: flex-end;
-    z-index: 500;
-  }
+  position: absolute;
+  display: flex;
+  align-items: flex-end;
+  z-index: 500;
+}
+
+.globey-container.bottom-left {
+  bottom: 20px;
+  left: 20px;
+}
+
+.globey-container.bottom-right {
+  bottom: -100px;
+  right: 20px;
+}
+
+.globey-container.default {
+  bottom: 20px;
+  left: 20px;
+}
+
   
   .globey-img {
     width: 100px;
@@ -39,6 +53,7 @@
     border-top-color: #fff9c4;
     border-bottom: 0;
   }
+
   
   @keyframes float {
     0%   { transform: translateY(0); }

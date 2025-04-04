@@ -85,7 +85,9 @@ const MapComponent = ({ onCountryClick, mascotVisible }) => {
       </MapContainer>
 
       {/*Hide mascot after country is clicked */}
-      {!countryClicked && mascotVisible && <Mascot />}
+      {!countryClicked && mascotVisible && (
+        <Mascot message={`<strong>Hi, My name is Globey!</strong><br />Click on a country to Learn More!`} />
+      )}
     </div>
   );
 };

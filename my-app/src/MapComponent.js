@@ -31,7 +31,7 @@ const brightColors = [
   "#45B8AC", "#D65076", "#2E8B57", "#FF7F50", "#FFD700"
 ];
 
-const MapComponent = ({ onCountryClick }) => {
+const MapComponent = ({ onCountryClick, mascotVisible }) => {
   const [countryClicked, setCountryClicked] = useState(false);
 
   const onEachCountry = (feature, layer) => {
@@ -85,7 +85,7 @@ const MapComponent = ({ onCountryClick }) => {
       </MapContainer>
 
       {/*Hide mascot after country is clicked */}
-      {!countryClicked && <Mascot />}
+      {!countryClicked && mascotVisible && <Mascot />}
     </div>
   );
 };

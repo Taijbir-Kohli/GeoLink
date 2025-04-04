@@ -34,6 +34,7 @@ const App = () => {
   const [showLoginPopup, setShowLoginPopup] = useState(false);
   const countryInfoRef = useRef(null);
   const navigate = useNavigate();
+  const [mascotVisible, setMascotVisible] = useState(true);
   let speechSynthesisInstance = window.speechSynthesis;
 
   useEffect(() => {
@@ -105,6 +106,7 @@ const App = () => {
       setIsSpeaking(false);
     }
     setSelectedCountry(countryName);
+    setMascotVisible(false); 
     const historyText = await fetchCountryHistory(countryName);
     setHistory(historyText);
 
@@ -239,7 +241,7 @@ const App = () => {
               </button>
             </div>
 
-            <MapComponent onCountryClick={handleCountryClick} />
+            <MapComponent onCountryClick={handleCountryClick} mascotVisible={mascotVisible} />
 
             {selectedCountry && (
               <div className="country-info-wrapper" ref={countryInfoRef}>

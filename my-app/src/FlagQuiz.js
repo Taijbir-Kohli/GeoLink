@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import "./App.css";
 import FlagQuizMap from "./FlagQuizMap";
 import countriesData from "./countries.json";
+import { getFirestore, doc, setDoc, getDoc } from "firebase/firestore";
+import { auth } from "./firebaseConfig"; // Import Firebase auth
 
 const FlagQuiz = () => {
   const navigate = useNavigate();
@@ -39,19 +41,100 @@ const FlagQuiz = () => {
     pickRandomCountry(); // Load first flag
   }, []);
 
-  const handleCountrySelect = (country) => {
+  const handleCountrySelect = async (country) => {
     setSelectedCountry(country);
+  
+    const isAnswerCorrect = country === targetCountry;
+  
+    if (!isAnswerCorrect && auth.currentUser) {
+      const user = auth.currentUser;
+      const db = getFirestore();
+      const userRef = doc(db, "quizresults", user.uid);
+      const userData = await getDoc(userRef);
+  
+      let userResults = userData.exists() ? userData.data() : {
+        username: user.displayName || "Anonymous",
+        quizScores: {},
+        totalScore: 0,
+        totalCorrectAnswers: 0,
+        totalQuestions: 0,
+        flagQuizScores: {
+          totalCorrect: 0,
+          totalAttempts: 0,
+          perCountry: {},
+        },
+      };
+  
+      const currentAttempts = userResults.flagQuizScores?.totalAttempts || 0;
+      const perCountry = userResults.flagQuizScores.perCountry || {};
+  
+      const [correct, attempts] = (perCountry[targetCountry] || "0/0").split("/").map(Number);
+  
+      perCountry[targetCountry] = `${correct}/${attempts + 1}`;
+  
+      userResults.flagQuizScores = {
+        ...userResults.flagQuizScores,
+        totalAttempts: currentAttempts + 1,
+        perCountry,
+      };
+  
+      await setDoc(userRef, userResults);
+    }
   };
+  
+  
 
   const isCorrect = selectedCountry === targetCountry;
   const countryCode = getCountryCode(targetCountry);
 
-  const handleNext = () => {
-    if (isCorrect) {
-      setScore((prev) => prev + 1); // ✅ Only add to score if correct
+  const handleNext = async () => {
+    const isAnswerCorrect = selectedCountry === targetCountry;
+  
+    if (isAnswerCorrect) {
+      setScore((prev) => prev + 1);
     }
+  
+    const user = auth.currentUser;
+  
+    if (user) {
+      const db = getFirestore();
+      const userRef = doc(db, "quizresults", user.uid);
+      const userData = await getDoc(userRef);
+  
+      let userResults = userData.exists() ? userData.data() : {
+        username: user.displayName || "Anonymous",
+        quizScores: {},
+        totalScore: 0,
+        totalCorrectAnswers: 0,
+        totalQuestions: 0,
+        flagQuizScores: {
+          totalCorrect: 0,
+          totalAttempts: 0,
+          perCountry: {},
+        },
+      };
+  
+      const currentCorrect = userResults.flagQuizScores?.totalCorrect || 0;
+      const currentAttempts = userResults.flagQuizScores?.totalAttempts || 0;
+      const perCountry = userResults.flagQuizScores.perCountry || {};
+  
+      const [correct, attempts] = (perCountry[targetCountry] || "0/0").split("/").map(Number);
+  
+      perCountry[targetCountry] = `${correct + 1}/${attempts + 1}`;
+  
+      userResults.flagQuizScores = {
+        totalCorrect: currentCorrect + 1,
+        totalAttempts: currentAttempts + 1,
+        perCountry,
+      };
+  
+      await setDoc(userRef, userResults);
+    }
+  
     pickRandomCountry(); // Move to next
   };
+  
+
 
   return (
     <div>

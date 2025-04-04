@@ -75,7 +75,7 @@ const App = () => {
     }
   };
   
-  // OLD IMPLEMENTATION THROUGH SPRING
+  // OLD IMPLEMENTATION OF COUNTRY DATA THROUGH SPRING
   // const fetchCountryHistory = async (countryName) => {
   //   try {
   //     const response = await fetch(`http://localhost:8080/api/countries/${countryName}`);
@@ -141,7 +141,7 @@ const App = () => {
     return [];
   };
   
-  // OLD IMPLEMENTATION FROM SPRINGBOOT
+  // OLD IMPLEMENTATION OF BACKEND FROM SPRINGBOOT
   // const fetchQuiz = async (country) => {
   //   try {
   //     const response = await fetch(`http://localhost:8080/api/quizzes/${encodeURIComponent(country)}`);
@@ -154,7 +154,7 @@ const App = () => {
   // };
 
 
-  // FOR REAL TIME DEPLOYMENT ON RENDER --------------------------- DO NOT DELETE
+  // OLD IMPLEMENTATION OF BACKEND FOR REAL TIME DEPLOYMENT ON RENDER
  
 
   // const fetchQuiz = async (country) => {

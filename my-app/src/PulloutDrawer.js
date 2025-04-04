@@ -19,7 +19,10 @@ const PulloutDrawer = ({ onLoginClick, user }) => {
       if (userData.exists()) {
         const data = userData.data();
         // Assuming quizScores is the correct field for storing individual quiz results
-        setQuizResults(data.quizScores || {});
+        setQuizResults({
+          quizScores: data.quizScores || {},
+          flagQuizScores: data.flagQuizScores?.perCountry || {},
+        });
         fetchQuizResults();
       }
     };
@@ -50,21 +53,35 @@ const PulloutDrawer = ({ onLoginClick, user }) => {
 
         {/* Display Quiz Results */}
         {user && (
-          <>
-            <h3>Quiz Results</h3>
-            {Object.keys(quizResults).length > 0 ? (
-              <ul>
-                {Object.entries(quizResults).map(([country, score]) => (
-                  <li key={country}>
-                    {country}: {score}
-                  </li>
-                ))}
-              </ul>
-            ) : (
-              <p>No quiz results yet.</p>
-            )}
-          </>
-        )}
+  <>
+    <h3>Quiz Results</h3>
+    {quizResults.quizScores && Object.keys(quizResults.quizScores).length > 0 ? (
+      <ul>
+        {Object.entries(quizResults.quizScores).map(([country, score]) => (
+          <li key={country}>
+            {country}: {score}
+          </li>
+        ))}
+      </ul>
+    ) : (
+      <p>No quiz results yet.</p>
+    )}
+
+    <h3>Flag Quiz Accuracy</h3>
+    {quizResults.flagQuizScores && Object.keys(quizResults.flagQuizScores).length > 0 ? (
+      <ul>
+        {Object.entries(quizResults.flagQuizScores).map(([country, value]) => (
+          <li key={country}>
+            {country}: {value}
+          </li>
+        ))}
+      </ul>
+    ) : (
+      <p>No flag quiz data yet.</p>
+    )}
+  </>
+  )}
+
 
         {/* If the user is logged in, show the Logout button, otherwise show the Login button */}
         {user ? (

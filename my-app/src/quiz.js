@@ -19,57 +19,51 @@ const Quiz = ({ selectedCountry, quizQuestions, onClose }) => {
       alert("You need to log in to save quiz results.");
       return;
     }
-
-    // Calculate the score for this quiz
+  
     const correctAnswers = quizQuestions.filter(
       (q) => selectedAnswers[q.question] === q.answer
     ).length;
     const totalQuestions = quizQuestions.length;
     const score = `${correctAnswers} / ${totalQuestions}`;
-
-    // Save result to Firestore
+  
     const userQuizRef = doc(db, "quizresults", user.uid);
     const userData = await getDoc(userQuizRef);
-
+  
     let userResults = userData.exists() ? userData.data() : {
       username: user.displayName || "Anonymous",
       quizScores: {},
-      totalScore: 0,
       totalCorrectAnswers: 0,
       totalQuestions: 0,
+      totalScore: 0,
     };
-
-    // Store individual result for selected country
+  
+    // Save individual result
     userResults.quizScores[selectedCountry] = score;
-
-    // Update total correct answers
-    const newTotalCorrectAnswers = Object.values(userResults.quizScores).reduce((sum, score) => {
-      const correct = parseInt(score.split(' / ')[0]); // Extract correct answers from fraction (e.g., "1/3")
+  
+    // Recalculate total correct answers and total questions from all scores
+    const newTotalCorrectAnswers = Object.values(userResults.quizScores).reduce((sum, s) => {
+      const correct = parseInt(s.split(" / ")[0], 10);
       return sum + correct;
     }, 0);
+  
+    const newTotalQuestions = Object.values(userResults.quizScores).reduce((sum, s) => {
+      const total = parseInt(s.split(" / ")[1], 10);
+      return sum + total;
+    }, 0);
+  
     userResults.totalCorrectAnswers = newTotalCorrectAnswers;
-
-    // Update total correct answers
-    const newTotalQuestions = Object.values(userResults.quizScores).reduce((sum, score) => {
-      const correct = parseInt(score.split(' / ')[1]); // Extract correct answers from fraction (e.g., "1/3")
-      return sum + correct;
-    }, 0);
     userResults.totalQuestions = newTotalQuestions;
-
-    // Update total score as a percentage (optional)
-    const totalPossibleAnswers = quizQuestions.length * Object.keys(userResults.quizScores).length;
-    const percentage = ((newTotalCorrectAnswers / totalPossibleAnswers) * 100).toFixed(2);
-    userResults.totalScore = percentage;
-
-    // // Update total score
-    // const newTotalScore = Object.values(userResults.quizScores).reduce((sum, score) => sum + score, 0);
-    // userResults.totalScore = newTotalScore;
-
-    // Save updated data to Firestore
+  
+    // Calculate percentage
+    const percentage = newTotalQuestions > 0
+      ? ((newTotalCorrectAnswers / newTotalQuestions) * 100).toFixed(2)
+      : 0;
+  
+    userResults.totalScore = Number(percentage); // store as number, not string
+  
     await setDoc(userQuizRef, userResults);
-
-    // alert(`Quiz submitted! Your score for ${selectedCountry}: ${correctAnswers} / ${totalQuestions}`);
   };
+  
 
   return (
     <div className="quiz-overlay" onClick={onClose}>

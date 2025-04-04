@@ -26,12 +26,23 @@ const LoginPopup = ({ onClose }) => {
         alert("Sign-up successful! Please check your email to verify your account.");
         setIsSignUp(false); // Switch to login mode after sign-up
 
-        // Store the user's username and initial quiz scores in Firestore
         await setDoc(doc(dbFirestore, "quizresults", userCredential.user.uid), {
           username: username,
-          quizScores: {}, // Initialize with empty quiz scores
-          totalScore: 0, // Initialize total score
-        });
+          quizScores: {}, // For country-based quizzes
+          totalScore: 0,
+          totalCorrectAnswers: 0,
+          totalQuestions: 0,
+          flagQuizScores: {
+            totalCorrect: 0,
+            totalAttempts: 0,
+            perCountry: {}, // Track correct/attempts by country
+          },
+          landmarkQuizScores: {
+            totalCorrect: 0,
+            totalAttempts: 0,
+            perCountry: {}, // Track correct/attempts by country for landmarks
+          },
+        });        
 
         // Optionally, store username in localStorage for leaderboard or later use
         localStorage.setItem("username", username);

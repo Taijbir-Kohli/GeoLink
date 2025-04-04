@@ -112,6 +112,11 @@ const FlagQuiz = () => {
           totalAttempts: 0,
           perCountry: {},
         },
+        landmarkQuizScores: {
+          totalCorrect: 0,
+          totalAttempts: 0,
+          perCountry: {},
+        },
       };
   
       const currentCorrect = userResults.flagQuizScores?.totalCorrect || 0;

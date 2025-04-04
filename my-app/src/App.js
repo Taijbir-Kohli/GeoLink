@@ -59,6 +59,10 @@ const App = () => {
 
   const fetchCountryHistory = async (countryName) => {
     try {
+      if (countryName == "N. Cyprus"){
+        countryName = "Northern Cyprus"
+      }
+
       const countryRef = ref(db, 'CountryData/' + countryName);
       const snapshot = await get(countryRef);
       if (snapshot.exists()) {
@@ -121,6 +125,9 @@ const App = () => {
   // NEW IMPLEMENTATION ON FIREBASE
   const fetchQuiz = async (country) => {
     try {
+      if (country == "N. Cyprus"){
+        country = "Northern Cyprus"
+      }
       const quizRef = ref(db, 'quizzes/' + country.toLowerCase()); // Reference to the country quiz data
       const snapshot = await get(quizRef);
       if (snapshot.exists()) {

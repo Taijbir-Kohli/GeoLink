@@ -51,6 +51,24 @@
           "answer": "Natural gas"
         }
       ],
+      "baikonur": [
+      {
+        "question": "What is Baikonur best known for?",
+        "options": ["Being a famous desert", "Having a spaceport", "Its tall mountains", "Being a capital city"],
+        "answer": "Having a spaceport"
+      },
+      {
+        "question": "Which country operates the Baikonur Cosmodrome?",
+        "options": ["Russia", "Kazakhstan", "United States", "China"],
+        "answer": "Russia"
+      },
+      {
+        "question": "What historic event is linked to Baikonur?",
+        "options": ["First human spaceflight", "First moon landing", "Discovery of penicillin", "Invention of rockets"],
+        "answer": "First human spaceflight"
+      }
+    ],
+
       "bahrain": [
         {
           "question": "What is Bahrain famous for historically?",
@@ -459,6 +477,24 @@
         "answer": "Buddha"
       }
     ],
+    "northern cyprus": [
+    {
+      "question": "Where is N. Cyprus located?",
+      "options": ["In the north of the island of Cyprus", "In the Middle East", "In Africa", "In Asia"],
+      "answer": "In the north of the island of Cyprus"
+    },
+    {
+      "question": "What culture influences Northern Cyprus the most?",
+      "options": ["Turkish and Mediterranean", "Greek and Roman", "French and German", "Indian and Chinese"],
+      "answer": "Turkish and Mediterranean"
+    },
+    {
+      "question": "What is Northern Cyprus known for?",
+      "options": ["Jungles and rainforests", "Castles and beaches", "Mountains and volcanoes", "Deserts and pyramids"],
+      "answer": "Castles and beaches"
+    }
+  ],
+
     "north korea": [
       {
         "question": "What type of government does North Korea have?",
